@@ -1,0 +1,133 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background-color: #ddd;
+	font-family: sans-serif;
+}
+.header{
+	position:relative;
+	background-color: #333;
+}
+.header nav{
+	    position: absolute;
+        top: 50%;
+        right: 0px;
+        transform: translateY(-50%);
+}
+.header img{
+	margin-left: 30px;
+}
+.header li{
+	float: left;
+	margin: 0 12px;	
+}
+
+.header li a{
+	font-weight: bold;
+	text-decoration: none;
+	font-size: 80%;
+	color: white;
+	
+}
+.header li a:visited{
+	color: #999;
+}
+/* header*/
+
+
+.article-1,.article-2,.div-3,.article-4,.aside-5 {
+	background-color: #fff;
+	margin: 20px 2%;
+	border: 1px solid #ccc;
+	box-shadow: 1px 1px #aaa;
+}
+
+.article-1 h1, .article-2 h1, .article-4 h1 {
+	padding: 30px 0px 15px 25px;
+}
+.article-1 h2, .article-2 h2, .article-4 h2{
+	padding: 0px 0px 15px 25px;
+	font-size: 100%;
+	color: #666;
+}
+.author{
+	padding: 0px 0px 15px 25px;
+	color: #666;
+	font-size: 85%;
+}
+.content{
+	text-indent: 2em;
+	padding: 0px 30px;
+	padding-bottom: 30px;
+}
+
+.img1{
+	margin-left: 30px;
+	margin-bottom: 10px;
+	margin-top: -10px;
+}
+
+.article-2 ul{
+	list-style-type: none;
+	margin-left: 50px;
+	margin-bottom: 40px;  
+}
+
+
+.div-3 h2{
+	padding: 40px 0 0 25px;
+}
+
+.div-3 figure{	
+	width: 130px;
+	border: 1px solid #bbb;
+	margin-top: 20px;
+	margin-left: 70px;
+}
+.div-3 {
+		padding-bottom: 40px;
+}
+.div-3 figure figcaption{
+	text-align: center;
+	margin: 5px;
+}
+.div-3 figure img{
+	width: 100px;
+	height: 80px;
+	margin:  5px 15px 5px 15px;
+}
+
+
+.article-4 ol{
+	margin-left: 70px;
+	margin-bottom: 20px;
+}
+.article-4 table{
+	margin: 0 auto 20px;
+	width: 97%;
+	text-align: left;
+	border: solid grey;
+	border-width: 1px;
+	border-collapse: collapse;
+}
+.article-4 table caption{
+	text-align: left;
+}
+.article-4 table th {
+	background-color: #222;
+	color: white;
+	font-size: .85em;
+	padding: 5px 0 5px 5px;
+}
+.article-4 table td{
+	border: solid #bbb;
+	border-width: 1px;
+	padding: 2px 0 2px 5px;
+	font-size: .90em;
+
+}
+.article-4 table tr:nth-child(6){
+	background-color: #bbb;
+}
