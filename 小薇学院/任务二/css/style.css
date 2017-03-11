@@ -153,6 +153,9 @@ body {
 .article-4 table tr:nth-child(6) {
     background-color: #bbb;
 }
+.aside-5{
+	padding-bottom: 38px;
+}
 
 .aside-title {
     margin: 20px;
@@ -178,7 +181,7 @@ body {
 
 .form table {
     width: 500px;
-    margin-left: 200px;
+    margin-left: 250px;
 }
 
 .form table td {
@@ -245,4 +248,11 @@ body {
 
 .copy {
     text-align: center;
+}
+footer{
+
+	height: 80px;
+	background-color: black;
+	color: white;
+	line-height: 80px;
 }
