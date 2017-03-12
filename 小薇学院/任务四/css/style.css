@@ -1,0 +1,40 @@
+.center{
+	width: 400px;
+	height: 200px;	
+	background-color: #ccc;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -200px;
+	margin-top: -100px;
+}
+.left{	
+	width: 0px;
+	height: 0px;
+	border:50px solid #fc0 ;
+	border-color:  transparent transparent  #fc0 transparent;
+	border-radius: 50px; 
+	transform:rotate(-45deg);
+	-ms-transform:rotate(-45deg); 	/* IE 9 */
+	-moz-transform:rotate(-45deg); 	/* Firefox */
+	-webkit-transform:rotate(-45deg); /* Safari 和 Chrome */
+	-o-transform:rotate(-45deg); 	/* Opera */		
+	position: relative;
+	top: -50px;
+	left: -50px; 
+}
+.right{
+	width: 0px;
+	height: 0px;
+	border:50px solid #fc0 ;
+	border-color:  #fc0 transparent   transparent   transparent ;
+	border-radius: 50px; 
+	transform:rotate(-45deg);
+	-ms-transform:rotate(-45deg); 	/* IE 9 */
+	-moz-transform:rotate(-45deg); 	/* Firefox */
+	-webkit-transform:rotate(-45deg); /* Safari 和 Chrome */
+	-o-transform:rotate(-45deg); 	/* Opera */	
+	position: relative;
+	left: 350px;
+	bottom: -50px;
+}
