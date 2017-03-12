@@ -17,6 +17,7 @@
 	border-radius:  0 0 50px 0 ; 
 	}
 
+
 .right{
 	width: 50px;
 	height: 50px;
@@ -57,3 +58,14 @@
 	left: 350px;
 	bottom: -50px;
 }*/
+=======
+.right{
+	width: 50px;
+	height: 50px;
+	background-color: #fc0;
+	border-radius:  50px 0 0  0 ; 
+	position: relative;
+	left: 350px;
+	bottom: -100px;
+	}
+>>>>>>> origin/master
