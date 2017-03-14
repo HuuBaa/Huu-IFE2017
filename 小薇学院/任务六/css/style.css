@@ -27,7 +27,7 @@
 
 .header-logo p {
     font-size: 12px;
-    font-family: "ºÚÌå", sans-serif;
+    font-family: "SimHei", sans-serif;
     color: #fff;
     padding-top: 42px;
     padding-left: 7px;
@@ -35,7 +35,7 @@
 
 .header-date p {
     font-size: 12px;
-    font-family: "ºÚÌå", sans-serif;
+    font-family: "SimHei", sans-serif;
     color: #d45d5c;
     position: absolute;
     right: 0px;
@@ -65,7 +65,7 @@
 
 .front-text .front-text-1 {
     text-decoration: underline;
-    font-family: "Î¢ÈíÑÅºÚ", sans-serif£» font-size: 24px;
+    font-family: "Microsoft YaHei", sans-serif£» font-size: 24px;
     padding-top: 8px;
     font-variant: small-caps;
 }
@@ -77,7 +77,7 @@
 }
 
 .front-text .front-text-3 {
-    font-family: "Î¢ÈíÑÅºÚ";
+    font-family: "Microsoft YaHei";
     font-size: 116px;
     font-style: italic;
     color: #75b86b;
@@ -89,7 +89,7 @@
     position: absolute;
     bottom: -4px;
     font-size: 55px;
-    font-family: "Î¢ÈíÑÅºÚ";
+    font-family: "Microsoft YaHei";
     color: #cc8091;
 }
 
@@ -139,13 +139,13 @@
     text-decoration: underline;
     font-size: 16px;
     font-weight: bold;
-    font-family: "Î¢ÈíÑÅºÚ";
+    font-family: "Microsoft YaHei";
     color: #767777;
     padding-bottom: 10px;
 }
 
 .mid-1 .what-text {
-    font: 12px "ËÎÌå";
+    font: 12px "SimSun";
     line-height: 16px;
 }
 
@@ -153,13 +153,13 @@
     text-decoration: underline;
     font-size: 16px;
     font-weight: bold;
-    font-family: "Î¢ÈíÑÅºÚ";
+    font-family: "Microsoft YaHei";
     color: #d2994f;
     padding-bottom: 10px;
 }
 
 .mid-2 .when-text {
-    font: 12px "ËÎÌå";
+    font: 12px "SimSun";
     line-height: 16px;
 }
 
@@ -167,13 +167,13 @@
     text-decoration: underline;
     font-size: 16px;
     font-weight: bold;
-    font-family: "Î¢ÈíÑÅºÚ";
+    font-family: "Microsoft YaHei";
     color: #cc7680;
     padding-bottom: 8px;
 }
 
 .mid-3 .how-text {
-    font: 12px "ËÎÌå";
+    font: 12px "SimSun";
     line-height: 22px;
 }
 
@@ -186,13 +186,13 @@
 .perc {
     color: #cd4a48;
     font-style: italic;
-    font-family: "Î¢ÈíÑÅºÚ";
+    font-family: "Microsoft YaHei";
     opacity: 0.7;
 }
 
 .w3 {
     color: #231815;
-    font-family: "Î¢ÈíÑÅºÚ";
+    font-family: "Microsoft YaHei";
     opacity: 0.7;
 }
 
@@ -209,7 +209,7 @@
 }
 
 .up-1 {
-    font: 72px "ºÚÌå";
+    font: 72px "SimHei";
     font-style: italic;
     font-size: bolder;
     color: #f5e327;
@@ -217,14 +217,14 @@
 }
 
 .up-2 {
-    font: 34px "ºÚÌå";
+    font: 34px "SimHei";
     font-size: bolder;
     color: #11456b;
     line-height: 16px;
 }
 
 .up-3 {
-    font: 33px "ºÚÌå";
+    font: 33px "SimHei";
     font-size: bold;
     color: #11456b;
     padding: 4px 0px 10px 0px;
@@ -235,13 +235,13 @@
 }
 
 .down-text {
-    font: 12px "ËÎÌå";
+    font: 12px "SimSun";
     line-height: 16px;
     color: #767777;
 }
 
 .qian {
-    font: 70px "Î¢ÈíÑÅºÚ";
+    font: 70px "Microsoft YaHei";
     color: #f5e327;
     float: left;
     padding-right: 20px;
@@ -273,14 +273,14 @@
 }
 
 .right-up-text1 {
-    font: 26px "Î¢ÈíÑÅºÚ";
+    font: 26px "Microsoft YaHei";
     color: #ffffff;
     line-height: 44px;
     padding: 0 15px;
 }
 
 .right-up-text2 {
-    font: 12px "Î¢ÈíÑÅºÚ";
+    font: 12px "Microsoft YaHei";
     color: #72b16a;
     word-spacing: 140%;
     font-style: italic;
@@ -324,7 +324,7 @@
 
 
 .zero{
-	font: 110px "Î¢ÈíÑÅºÚ";
+	font: 110px "Microsoft YaHei";
 	color:#ffffff ;
 	padding: 0 5px;
 	line-height: 160px;
@@ -343,12 +343,12 @@
 .ott-1,.ott-3{
 	color: #fff;
 	line-height: 24px;
-	font: 18px "ºÚÌå";
+	font: 18px "SimHei";
 	font-style: italic;
 	
 }
 .ott-2,.ott-4{
-	font: 12px "ºÚÌå";
+	font: 12px "SimHei";
 	color: #fff;
 	
 }
@@ -358,43 +358,50 @@
 	height: 160px;
 	position: absolute;
 	right: 0;
-	bottom: -8px;
+	bottom: -12px;
+	font-size: 14px;
 	text-align: center;
-
-
+	font-family: "SimHei";
+	font-style: oblique;
+	color: #5a5b5b;
 }
 
 .quote{
 	display: inline;
 	height: 28px;
 	font-size: 72px;
-	font-family: "ºÚÌå";
+	font-family: "SimHei";
 	color: #d4545c;
 	line-height: 72px;
 }
 .quote1{
+	font-style: normal;
 	float: left;
-	margin-top: -10px;
+	margin-top: -12px;
+	margin-left: -24px;
 
 }
 .quote2{
+	font-style: normal;
 	float: right;
+	margin-right: -20px;
 
 }
 
 .span1{
-	font: 12px "ËÎÌå";
+	font: 12px "SimSun";
 	font-style: italic;
 	color: #5a5b5b;
 }
 .span2{
-	font: 16px "ËÎÌå";
+	font: 16px "SimSun";
 	color: #5a5b5c;
 
 }
 
 .right-down-text1{
 	text-align: left;
+	font-family: "SimSun"
 }
 
 
@@ -410,6 +417,6 @@
 .footer-text{
 	position: absolute;
 	right: 0px;
-	font: 12px "ºÚÌå";
+	font: 12px "SimHei";
 	color: #d45d5c;
 }
