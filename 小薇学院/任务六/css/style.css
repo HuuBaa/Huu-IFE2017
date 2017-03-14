@@ -1,0 +1,415 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.paper {
+    position: relative;
+    width: 980px;
+    height: 1386px;
+    margin: 0 auto;
+    border: 1px solid black;
+}
+
+.header {
+    position: relative;
+    width: 892px;
+    margin: 0 auto;
+    border-bottom: 2px #939ebc solid;
+}
+
+.header-logo {
+    position: relative;
+    width: 110px;
+    height: 61px;
+    background-color: #d45d5c;
+}
+
+.header-logo p {
+    font-size: 12px;
+    font-family: "ºÚÌå", sans-serif;
+    color: #fff;
+    padding-top: 42px;
+    padding-left: 7px;
+}
+
+.header-date p {
+    font-size: 12px;
+    font-family: "ºÚÌå", sans-serif;
+    color: #d45d5c;
+    position: absolute;
+    right: 0px;
+    top: 43px;
+}
+
+.front {
+    position: relative;
+    margin-top: 34px;
+}
+
+.front-pic {
+    height: 301px;
+    width: 641px;
+    margin-left: 44px;
+    margin-top: 34px;
+}
+
+.front-text {
+    position: absolute;
+    right: 44px;
+    top: 0px;
+    width: 203px;
+    height: 299px;
+    border-top: 2px solid #cc8091;
+}
+
+.front-text .front-text-1 {
+    text-decoration: underline;
+    font-family: "Î¢ÈíÑÅºÚ", sans-serif£» font-size: 24px;
+    padding-top: 8px;
+    font-variant: small-caps;
+}
+
+.front-text .front-text-2 {
+    font-family: "¿¬Ìå", sans-serif;
+    font-size: 12px;
+    color: #676767;
+}
+
+.front-text .front-text-3 {
+    font-family: "Î¢ÈíÑÅºÚ";
+    font-size: 116px;
+    font-style: italic;
+    color: #75b86b;
+}
+
+
+.front-text-4 {
+    line-height: 55px;
+    position: absolute;
+    bottom: -4px;
+    font-size: 55px;
+    font-family: "Î¢ÈíÑÅºÚ";
+    color: #cc8091;
+}
+
+.front-text2 {
+    position: absolute;
+    right: 28px;
+    bottom: -2px;
+}
+
+.front-text2-1 {
+    font-size: 21px;
+    color: #cc8091;
+}
+
+.front-text2-2 {
+    font-size: 12px;
+    color: #cc8091;
+}
+
+.mid {
+    width: 641px;
+    margin-left: 44px;
+    margin-top: 44px;
+}
+
+.mid-1 {
+    float: left;
+    height: 166px;
+    width: 230px;
+    margin-right: 15px;
+}
+
+.mid-2 {
+    float: left;
+    height: 166px;
+    width: 200px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.mid-3 {
+    float: left;
+    margin-left: 15px;
+}
+
+.mid-1 .what {
+    text-decoration: underline;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "Î¢ÈíÑÅºÚ";
+    color: #767777;
+    padding-bottom: 10px;
+}
+
+.mid-1 .what-text {
+    font: 12px "ËÎÌå";
+    line-height: 16px;
+}
+
+.mid-2 .when {
+    text-decoration: underline;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "Î¢ÈíÑÅºÚ";
+    color: #d2994f;
+    padding-bottom: 10px;
+}
+
+.mid-2 .when-text {
+    font: 12px "ËÎÌå";
+    line-height: 16px;
+}
+
+.mid-3 .how {
+    text-decoration: underline;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "Î¢ÈíÑÅºÚ";
+    color: #cc7680;
+    padding-bottom: 8px;
+}
+
+.mid-3 .how-text {
+    font: 12px "ËÎÌå";
+    line-height: 22px;
+}
+
+.w3perc {
+    font-size: 12px;
+    line-height: 16px;
+    padding-top: 34px;
+}
+
+.perc {
+    color: #cd4a48;
+    font-style: italic;
+    font-family: "Î¢ÈíÑÅºÚ";
+    opacity: 0.7;
+}
+
+.w3 {
+    color: #231815;
+    font-family: "Î¢ÈíÑÅºÚ";
+    opacity: 0.7;
+}
+
+.left {
+    float: left;
+    clear: both;
+    width: 415px;
+    margin-left: 44px;
+    padding-top: 50px;
+}
+
+.up {
+    border-bottom: 2px solid #11456b;
+}
+
+.up-1 {
+    font: 72px "ºÚÌå";
+    font-style: italic;
+    font-size: bolder;
+    color: #f5e327;
+    padding-right: 20px;
+}
+
+.up-2 {
+    font: 34px "ºÚÌå";
+    font-size: bolder;
+    color: #11456b;
+    line-height: 16px;
+}
+
+.up-3 {
+    font: 33px "ºÚÌå";
+    font-size: bold;
+    color: #11456b;
+    padding: 4px 0px 10px 0px;
+}
+
+.down {
+    margin-top: 14px;
+}
+
+.down-text {
+    font: 12px "ËÎÌå";
+    line-height: 16px;
+    color: #767777;
+}
+
+.qian {
+    font: 70px "Î¢ÈíÑÅºÚ";
+    color: #f5e327;
+    float: left;
+    padding-right: 20px;
+}
+
+.pic-2 {
+    clear: both;
+    float: right;
+    padding: 12px 0 12px 20px;
+    margin-right: 0px;
+}
+
+.right-up {
+    position: relative;
+}
+
+.right-up-logo {
+    position: absolute;
+    top: 244px;
+    right: 44px;
+}
+
+.right-up-text {
+    position: absolute;
+    top: 450px;
+    right: 224px;
+    height: 44px;
+    border-left: 3px solid #72b16a;
+}
+
+.right-up-text1 {
+    font: 26px "Î¢ÈíÑÅºÚ";
+    color: #ffffff;
+    line-height: 44px;
+    padding: 0 15px;
+}
+
+.right-up-text2 {
+    font: 12px "Î¢ÈíÑÅºÚ";
+    color: #72b16a;
+    word-spacing: 140%;
+    font-style: italic;
+    line-height: 44px;
+}
+
+
+.right-down{
+	background-color: #EEEDD6;
+	width: 459px;
+	height: 318px;
+	position: absolute;
+	right: 44px;
+	bottom: 92px;
+}
+
+.right-down-zero{
+	height: 160px;
+	width: 260px;
+	background-color: #D45D5C;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+
+
+
+.pic4{
+	position: absolute;
+	left: 24px;
+	top: 30px;
+	
+}
+
+.right-down-text1{
+	position:absolute;
+	left: 40px;
+	top: 10px;
+	line-height: 40px;
+}
+
+
+.zero{
+	font: 110px "Î¢ÈíÑÅºÚ";
+	color:#ffffff ;
+	padding: 0 5px;
+	line-height: 160px;
+}
+.ott{
+	height: 86px;
+	border-left: 2px solid #fff;
+	position: absolute;
+	left: 70px;
+	top: 38px;
+
+}
+.ottf1,.ottf2{
+	padding-left: 7px;
+}
+.ott-1,.ott-3{
+	color: #fff;
+	line-height: 24px;
+	font: 18px "ºÚÌå";
+	font-style: italic;
+	
+}
+.ott-2,.ott-4{
+	font: 12px "ºÚÌå";
+	color: #fff;
+	
+}
+
+.right-down-text2{
+	width: 200px;
+	height: 160px;
+	position: absolute;
+	right: 0;
+	bottom: -8px;
+	text-align: center;
+
+
+}
+
+.quote{
+	display: inline;
+	height: 28px;
+	font-size: 72px;
+	font-family: "ºÚÌå";
+	color: #d4545c;
+	line-height: 72px;
+}
+.quote1{
+	float: left;
+	margin-top: -10px;
+
+}
+.quote2{
+	float: right;
+
+}
+
+.span1{
+	font: 12px "ËÎÌå";
+	font-style: italic;
+	color: #5a5b5b;
+}
+.span2{
+	font: 16px "ËÎÌå";
+	color: #5a5b5c;
+
+}
+
+.right-down-text1{
+	text-align: left;
+}
+
+
+.footer {
+	position: relative;
+    width: 892px;
+    height: 59px;
+    margin: 0 auto;
+    margin-top: -60px;
+    border-top: 1px solid #939e9c;
+}
+
+.footer-text{
+	position: absolute;
+	right: 0px;
+	font: 12px "ºÚÌå";
+	color: #d45d5c;
+}
