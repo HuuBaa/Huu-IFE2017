@@ -140,11 +140,12 @@
     font-size: 16px;
     font-weight: bold;
     font-family: "Microsoft YaHei";
-    color: #767777;
+    color: #418c59;
     padding-bottom: 10px;
 }
 
 .mid-1 .what-text {
+	color: #767777;
     font: 12px "SimSun";
     line-height: 16px;
 }
@@ -159,6 +160,8 @@
 }
 
 .mid-2 .when-text {
+	opacity: 0.7;
+	color: #231815;
     font: 12px "SimSun";
     line-height: 16px;
 }
@@ -173,6 +176,8 @@
 }
 
 .mid-3 .how-text {
+	opacity: 0.7;
+	color: #231815;
     font: 12px "SimSun";
     line-height: 22px;
 }
@@ -320,6 +325,7 @@
 	left: 40px;
 	top: 16px;
 	line-height: 40px;
+
 }
 
 
@@ -389,8 +395,9 @@
 }
 
 .span1{
-	font: 12px "SimSun";
-	font-style: italic;
+	font-size: 12px; 
+	font-family:"SimSun";
+	font-style: oblique;
 	color: #5a5b5b;
 }
 .span2{
