@@ -1,0 +1,171 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+ 
+ body{
+ 	min-width: 1280px;
+ 	background-color: #666;
+ }
+ .float-left{
+	float: left;
+}
+.float-right{
+	float: right;
+}
+.content{
+	margin: 0 auto;
+	width: 1280px;
+}
+.header{
+	position: relative;
+	width: 1280px;
+	height: 56px;
+	background-color: #fff;
+}
+.header-logo{
+	width: 31px;
+	height: 31px;
+	margin-left: 59px;
+	margin-top: 14px;
+}
+.header-nw{
+	margin-left: 11px;
+}
+.header-nw p{
+	color: #393a3a;
+	font: 21px/56px "SimHei";
+
+}
+.header .nav ul{
+	list-style: none;
+	margin-right: 68px;
+}
+.header .nav ul li{
+	display: inline-block;
+	font: 14px "Microsoft YaHei";
+	color: #787b83;
+	padding-left: 46px;
+	margin-top: 17px;
+	font-style: bolder;
+
+}
+.header .nav ul li:first-child{
+	padding-left: 23px;
+	padding-right: 23px;
+	color: #e74f4d;
+	border-bottom: 5px solid #e74f4d;
+	padding-bottom:  15px;	
+}
+
+
+.header .nav ul li:last-child{
+	color: #e74f4d;
+
+}
+.hader-logo2{
+	position: absolute;
+	right: 100px;
+	top: 17px;
+
+}
+
+.part1-img{
+	position: relative;
+}
+.part1-text1{
+	position: absolute;
+	top: 230px;
+	left: 127px;
+}
+
+.part1-text1 p{
+	font: 60px "Microsoft YaHei";
+	color: #fff;
+}
+.part1-text2{
+	position: absolute;
+	top: 330px;
+	left: 127px;
+}
+.part1-text2 p{
+	font: 21px/35px "Microsoft YaHei";
+	color: #fff;	
+}
+.part1-cmd{
+	height: 64px;
+	width: 330px;
+	background-color: #E74F4D;
+	text-align: center;
+	font: 30px/64px "Microsoft YaHei";
+	color: #fff;
+	position: absolute;
+	top: 428px;
+	left: 127px;
+}
+.part2{
+	position: relative;
+}
+.part2-logo{
+	padding-top: 45px;
+	position: absolute;
+	top: -163px;
+	background-color: #fff;
+	width: 1280px;
+}
+.part2-logo img{
+	display: block;
+	margin: 0 auto;
+}
+
+
+.part2-box{
+	position: absolute;
+	top:-76px;
+	background-color: #fff;
+	width: 1280px;
+}
+
+
+.part2-box1,.part2-box2,.part2-box3,.part2-box4{
+	background-color: #fff;
+	font: 14px/20px "SimHei" ;
+	color: #767777;
+
+}
+.part2-box1,.part2-box2,.part2-box3,.part2-box4{
+	height: 47px;	
+	text-align: center;
+	border-right: 2px solid #aaa;
+	margin-top: 46px;
+	margin-bottom: 70px;
+ }
+
+ .part2-box1{
+ 	width: 324px;
+ }
+ .part2-box2{
+	width:332px;
+ }
+ .part2-box3{
+ 	width: 316px;
+ }
+  .part2-box4{
+  	width: 302px;
+  	border-style: none;
+  }
+
+
+  .part3{
+  	position: relative;
+  	margin-top: 86px;
+  }
+  .part3 p{
+  	font: 54px/54px "SimHei";
+  	color: #323333;
+  	opacity: 0.5;
+  	position: absolute;
+  	top: 228px;
+  	left: 220px;
+  }
+
