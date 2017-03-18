@@ -5,13 +5,14 @@ body{
 
 	background-color: #eee;
 }
-div{
+.div{
+	float: left;
+	padding: 10px;	
+}
+.div div:first-child{	
 	background-color: #fff;
 	border: #999 solid 1px;
-	outline:  #eee solid 10px;
-	float: left;
-	height: 50px;	
-	margin-top: 10px;
+	height: 50px;
 }
 
 
