@@ -21,13 +21,12 @@
 </head>
 
 <body>
-    <input type="text" id="textbox" >
+    <input type="text" id="textbox">
     <input type="submit" value="左侧入" id="left_in">
     <input type="submit" value="右侧入" id="right_in">
     <input type="submit" value="左侧出" id="left_out">
     <input type="submit" value="右侧出" id="right_out">
-    <div id="numbox">
-    </div>
+    <div id="numbox"></div>
     <script>
     var textbox = document.getElementById("textbox");
     var left_in = document.getElementById("left_in");
@@ -35,19 +34,19 @@
     var left_out = document.getElementById("left_out");
     var right_out = document.getElementById("right_out");
     var numbox = document.getElementById("numbox");
-    
 
-    function rightIn() {
-        var lfbox = document.createElement("div");
-        if ( (!Number(textbox.value) && textbox.value != 0) || textbox.value == "" ) {			
-            alert("请输入数字"); 
-            return false;   	
-        };
+    function createDiv() {
+    	if ((!Number(textbox.value) && textbox.value != 0) || textbox.value == "") {       	
+            alert("请输入数字");
+            return false
+        }
+        lfbox = document.createElement("div"); //不用var 全局用
         var lfbox_num = document.createTextNode(textbox.value);
         lfbox.appendChild(lfbox_num);
-        lfbox.onclick = function(){
-        	numbox.removeChild(this);
-         };
+
+        lfbox.onclick = function() {
+            numbox.removeChild(this);
+        };
         lfbox.style.border = "1px solid red";
         lfbox.style.backgroundColor = "red";
         lfbox.style.color = "white";
@@ -55,36 +54,31 @@
         lfbox.style.float = "left";
         lfbox.style.margin = "10px";
         lfbox.style.padding = "10px";
-        lfbox.style.lineHeight = "30px";
-		
-        numbox.appendChild(lfbox);
+        lfbox.style.lineHeight = "30px" 
+       //也可以在css中设置
+
     }
 
 
-    function leftIn() {
-        var lfbox = document.createElement("div");
-        if ( (!Number(textbox.value) && textbox.value != 0) || textbox.value == "" ) {			
-            alert("请输入数字"); 
-            return false;   	
-        };
-        var lfbox_num = document.createTextNode(textbox.value);
-        lfbox.appendChild(lfbox_num);
-        lfbox.onclick = function(){
-        	numbox.removeChild(this);
-         };
-        lfbox.style.border = "1px solid red";
-        lfbox.style.backgroundColor = "red";
-        lfbox.style.color = "white";
-        lfbox.style.height = "30px";
-        lfbox.style.float = "left";
-        lfbox.style.margin = "10px";
-        lfbox.style.padding = "10px";
-        lfbox.style.lineHeight = "30px"
+    function rightIn() {
+        createDiv();
+        numbox.appendChild(lfbox);
+        textbox.value = "";
+    }
+
+
+    function leftIn() { 	
+        createDiv();
         numbox.insertBefore(lfbox, numbox.firstChild);
+		textbox.value = "";
     }
 
 
     function leftOut() {
+        if (numbox.childNodes.length == 0) {
+            alert("全删完啦");
+            return false
+        }
         alert("移除数字：" + numbox.firstChild.innerText);
         numbox.removeChild(numbox.firstChild);
 
@@ -92,6 +86,10 @@
 
 
     function rightOut() {
+        if (numbox.childNodes.length == 0) {
+            alert("全删完啦");
+            return false
+        }
         alert("移除数字：" + numbox.lastChild.innerText);
         numbox.removeChild(numbox.lastChild);
 
@@ -101,12 +99,6 @@
     right_in.onclick = rightIn;
     right_out.onclick = rightOut;
     left_out.onclick = leftOut;
-
-
-    
-
-    
-    
     </script>
 </body>
 
