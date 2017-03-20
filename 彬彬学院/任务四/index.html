@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>task4</title>
+    <style>
+    #left-out {
+        margin-left: 40px;
+    }
+    
+    input {
+        border: 1px solid #ccc;
+    }
+    
+    input[type="submit"] {
+        border-radius: 4px;
+        background-color: transparent;
+    }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="textbox" >
+    <input type="submit" value="左侧入" id="left_in">
+    <input type="submit" value="右侧入" id="right_in">
+    <input type="submit" value="左侧出" id="left_out">
+    <input type="submit" value="右侧出" id="right_out">
+    <div id="numbox">
+    </div>
+    <script>
+    textbox = document.getElementById("textbox");
+    left_in = document.getElementById("left_in");
+    right_in = document.getElementById("right_in");
+    left_out = document.getElementById("left_out");
+    right_out = document.getElementById("right_out");
+    numbox = document.getElementById("numbox");
+    
+
+    function rightIn() {
+        lfbox = document.createElement("div");
+        if ( (!Number(textbox.value) && textbox.value != 0) || textbox.value == "" ) {			
+            alert("请输入数字"); 
+            return false;   	
+        };
+        lfbox_num = document.createTextNode(textbox.value);
+        lfbox.appendChild(lfbox_num);
+        lfbox.onclick = function(){
+        	numbox.removeChild(this);
+         };
+        lfbox.style.border = "1px solid red";
+        lfbox.style.backgroundColor = "red";
+        lfbox.style.color = "white";
+        lfbox.style.height = "30px";
+        lfbox.style.float = "left";
+        lfbox.style.margin = "10px";
+        lfbox.style.padding = "10px";
+        lfbox.style.lineHeight = "30px";
+		
+        numbox.appendChild(lfbox);
+    }
+
+
+    function leftIn() {
+        lfbox = document.createElement("div");
+        if ( (!Number(textbox.value) && textbox.value != 0) || textbox.value == "" ) {			
+            alert("请输入数字"); 
+            return false;   	
+        };
+        lfbox_num = document.createTextNode(textbox.value);
+        lfbox.appendChild(lfbox_num);
+        lfbox.onclick = function(){
+        	numbox.removeChild(this);
+         };
+        lfbox.style.border = "1px solid red";
+        lfbox.style.backgroundColor = "red";
+        lfbox.style.color = "white";
+        lfbox.style.height = "30px";
+        lfbox.style.float = "left";
+        lfbox.style.margin = "10px";
+        lfbox.style.padding = "10px";
+        lfbox.style.lineHeight = "30px"
+        numbox.insertBefore(lfbox, numbox.firstChild);
+    }
+
+
+    function leftOut() {
+        alert("移除数字：" + numbox.firstChild.innerText);
+        numbox.removeChild(numbox.firstChild);
+
+    }
+
+
+    function rightOut() {
+        alert("移除数字：" + numbox.lastChild.innerText);
+        numbox.removeChild(numbox.lastChild);
+
+    }
+
+    left_in.onclick = leftIn;
+    right_in.onclick = rightIn;
+    right_out.onclick = rightOut;
+    left_out.onclick = leftOut;
+
+
+    
+
+    
+    
+    </script>
+</body>
+
+</html>
