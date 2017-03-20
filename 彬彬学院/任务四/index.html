@@ -29,21 +29,21 @@
     <div id="numbox">
     </div>
     <script>
-    textbox = document.getElementById("textbox");
-    left_in = document.getElementById("left_in");
-    right_in = document.getElementById("right_in");
-    left_out = document.getElementById("left_out");
-    right_out = document.getElementById("right_out");
-    numbox = document.getElementById("numbox");
+    var textbox = document.getElementById("textbox");
+    var left_in = document.getElementById("left_in");
+    var right_in = document.getElementById("right_in");
+    var left_out = document.getElementById("left_out");
+    var right_out = document.getElementById("right_out");
+    var numbox = document.getElementById("numbox");
     
 
     function rightIn() {
-        lfbox = document.createElement("div");
+        var lfbox = document.createElement("div");
         if ( (!Number(textbox.value) && textbox.value != 0) || textbox.value == "" ) {			
             alert("请输入数字"); 
             return false;   	
         };
-        lfbox_num = document.createTextNode(textbox.value);
+        var lfbox_num = document.createTextNode(textbox.value);
         lfbox.appendChild(lfbox_num);
         lfbox.onclick = function(){
         	numbox.removeChild(this);
@@ -62,12 +62,12 @@
 
 
     function leftIn() {
-        lfbox = document.createElement("div");
+        var lfbox = document.createElement("div");
         if ( (!Number(textbox.value) && textbox.value != 0) || textbox.value == "" ) {			
             alert("请输入数字"); 
             return false;   	
         };
-        lfbox_num = document.createTextNode(textbox.value);
+        var lfbox_num = document.createTextNode(textbox.value);
         lfbox.appendChild(lfbox_num);
         lfbox.onclick = function(){
         	numbox.removeChild(this);
