@@ -23,6 +23,21 @@
         height: 100px;
         margin-top: 20px;
     }
+    
+    #numbox div {
+        float: left;
+        margin-left: 5px;
+        width: 15px;
+        background-color: red;
+    }
+    
+    #numbox .finshed {
+        background-color: green;
+    }
+    
+    #numbox .current {
+        background-color: yellow;
+    }
     </style>
 </head>
 
@@ -33,6 +48,8 @@
     <input type="submit" value="左侧出" id="left_out">
     <input type="submit" value="右侧出" id="right_out">
     <input type="submit" value="排序" id="sort">
+    <input type="submit" value="加入60个随机数" id="_import" onclick="ranImport()">
+    <input type="submit" value="清空" id="_clear" onclick="removeRan()">
     <div id="numbox"></div>
     <script>
     var textbox = document.getElementById("textbox");
@@ -42,27 +59,46 @@
     var right_out = document.getElementById("right_out");
     var numbox = document.getElementById("numbox");
     var sortbot = document.getElementById("sort");
+    var _import = document.getElementById("_import");
+    var addDiv = numbox.getElementsByTagName("div");
+
+    function ranImport() {
+        if (numbox.childNodes.length >= 1) {
+            for (var i = 0, len = addDiv.length; i < len; i++) {
+                numbox.removeChild(addDiv[0]);
+            }
+        }
+        for (var i = 0; i < 60; i++) {
+            textbox.value = Math.ceil(Math.random() * (100 - 20) + 20);
+            createDiv();
+            numbox.appendChild(lfbox);
+        }
+    };
+
+    function removeRan() {
+    	clearInterval(timer); 
+        for (var i = 0, len = addDiv.length; i < len; i++) {
+            numbox.removeChild(addDiv[0]);
+            
+        }
+
+    };
 
     function createDiv() {
         if (numbox.childNodes.length < 60) {
             lfbox = document.createElement("div"); //不用var 全局用
             var heimargin = 100 - Number(textbox.value);
-            lfbox.style.float = "left";
-            lfbox.style.marginLeft = "5px";
-            lfbox.style.width = "15px";
-            lfbox.style.backgroundColor = "red";
             lfbox.style.height = Number(textbox.value) + "px";
-            lfbox.style.float = "left";
             //设置margin 至于最底下
             lfbox.style.marginTop = heimargin + "px";
             lfbox.onclick = function() {
                 numbox.removeChild(this);
             }
         } else {
-            alert("只能输入60个值，最后输入为：" + textbox.value);
+            alert("只能输入60个值");
         }
 
-    }
+    };
 
     function rightIn() {
         if (!Number(textbox.value) || textbox.value < 10 || textbox.value > 100 || textbox.value == "") {
@@ -105,35 +141,67 @@
     };
 
     function sortNum(array) {
-        var tmp, tmp2;
-        for (var i = 0; i < array.length; i++) {
-            for (var j = 0; j < array.length - i - 1; j++) {
-
-                if (parseInt(array[j].style.height) > parseInt(array[j + 1].style.height)) {
-                    tmp = array[j].style.height;
-                    array[j].style.height = array[j + 1].style.height;
-                    array[j + 1].style.height = tmp;
-                    tmp2 = array[j].style.marginTop;
-                    array[j].style.marginTop = array[j + 1].style.marginTop;
-                    array[j + 1].style.marginTop = tmp2;
-
+    	
+        var i = 0;
+        var j = 0;
+        var len = array.length;
+        timer = setInterval(function(){
+                if (i < len) {                   
+                    if (j < len - i - 1) {
+                    	if (j<len - i - 2) {
+                    		array[j].className="";
+                    		
+                    		array[j+2].className="current";                   		
+                    	}
+                        if (parseFloat(array[j].style.height) > parseFloat(array[j + 1].style.height)) {
+                            swap(array, j, j + 1);
+                        }
+                        j = j + 1;
+                    }else{
+                    i = i + 1;
+                    if (j>1) {
+                    	array[j-1].className="";
+                	}
+                    array[j].className="finshed";
+                    j = 0; 
+                    }
+                    
+                } else {
+                clearInterval(timer);
                 }
-            }
+            },50)
         }
 
-    }
+        function sort(array) {
 
+            for (var i = 0; i < array.length; i++) {
+                for (var j = 0; j < array.length - i - 1; j++) {
+                    if (parseFloat(array[j].style.height) > parseFloat(array[j + 1].style.height)) {
+                        swap(array, j, j + 1);
+                    } else {
+                        continue;
+                    }
+                }
+            }
+        };
 
+        function swap(array, or1, or2) {
+            var tmp;
+            tmp = array[or1].style.height;
+            array[or1].style.height = array[or2].style.height;
+            array[or2].style.height = tmp;
+            tmp = array[or1].style.marginTop;
+            array[or1].style.marginTop = array[or2].style.marginTop;
+            array[or2].style.marginTop = tmp;
+        };
 
-    var addDiv = numbox.getElementsByTagName("div");
-
-    sortbot.onclick = function() {
-        sortNum(addDiv);
-    };
-    left_in.onclick = leftIn;
-    right_in.onclick = rightIn;
-    right_out.onclick = rightOut;
-    left_out.onclick = leftOut;
+        sortbot.onclick = function() {
+            sortNum(addDiv);
+        };
+        left_in.onclick = leftIn;
+        right_in.onclick = rightIn;
+        right_out.onclick = rightOut;
+        left_out.onclick = leftOut;
     </script>
 </body>
 
