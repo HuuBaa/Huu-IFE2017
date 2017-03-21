@@ -104,52 +104,32 @@
         numbox.removeChild(numbox.lastChild);
     };
 
-    function sortNum() {
-        var addDiv = numbox.getElementsByTagName("div");
-        var array = new Array();
-        var tmp, tmp2, hei, hei2, heinum, hei2num, heimar, hei2mar;
-         array=convertListToArray(addDiv);
-        
-        for ( var j = 0, len = array.length; j < len; j++ ) {
-        	
-         for (var i = 0, len = array.length; i < len ; i++) {
-         		
-                hei = array[i].style.height;
-                hei2 = array[i+1].style.height;
-                heinum = Number(hei.split("px")[0]);
-                hei2num = Number(hei2.split("px")[0]);
-                heimar = array[i].style.marginTop;
-                hei2mar = array[i+1].style.marginTop;
-                if (heinum > hei2num) {
-                    tmp = hei;
-                    array[i].style.height = hei2;
-                    array[i+1].style.height = tmp;
-                    tmp2 = heimar;
-                    array[i].style.marginTop = hei2mar;
-                    array[i+1].style.marginTop = tmp2;
+    function sortNum(array) {
+        var tmp, tmp2;
+        for (var i = 0; i < array.length; i++) {
+            for (var j = 0; j < array.length - i - 1; j++) {
+
+                if (parseInt(array[j].style.height) > parseInt(array[j + 1].style.height)) {
+                    tmp = array[j].style.height;
+                    array[j].style.height = array[j + 1].style.height;
+                    array[j + 1].style.height = tmp;
+                    tmp2 = array[j].style.marginTop;
+                    array[j].style.marginTop = array[j + 1].style.marginTop;
+                    array[j + 1].style.marginTop = tmp2;
 
                 }
             }
         }
-        return addDiv;
 
     }
 
-    function convertListToArray(nodes) {
-    var array = null;
-    try{
-        array = Array.prototype.slice.call(nodes,0);
-    }catch(ex){
-        array = new Array();
-        for(var i = 0,len = nodes.length;i < len;i++) {
-            array.push(nodes[i]);
-        }
-    }
 
-    return array;
-}
 
-    sortbot.onclick = sortNum;
+    var addDiv = numbox.getElementsByTagName("div");
+
+    sortbot.onclick = function() {
+        sortNum(addDiv);
+    };
     left_in.onclick = leftIn;
     right_in.onclick = rightIn;
     right_out.onclick = rightOut;
