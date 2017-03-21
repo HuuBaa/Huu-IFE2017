@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>task4</title>
+    <style>
+    #left-out {
+        margin-left: 40px;
+    }
+    
+    input {
+        border: 1px solid #ccc;
+    }
+    
+    input[type="submit"] {
+        border-radius: 4px;
+        background-color: transparent;
+    }
+    
+    #numbox {
+        display: flex;
+        height: 100px;
+        margin-top: 20px;
+    }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="textbox">
+    <input type="submit" value="左侧入" id="left_in">
+    <input type="submit" value="右侧入" id="right_in">
+    <input type="submit" value="左侧出" id="left_out">
+    <input type="submit" value="右侧出" id="right_out">
+    <input type="submit" value="排序" id="sort">
+    <div id="numbox"></div>
+    <script>
+    var textbox = document.getElementById("textbox");
+    var left_in = document.getElementById("left_in");
+    var right_in = document.getElementById("right_in");
+    var left_out = document.getElementById("left_out");
+    var right_out = document.getElementById("right_out");
+    var numbox = document.getElementById("numbox");
+    var sortbot = document.getElementById("sort");
+
+    function createDiv() {
+        if (numbox.childNodes.length < 60) {
+            lfbox = document.createElement("div"); //不用var 全局用
+            var heimargin = 100 - Number(textbox.value);
+            lfbox.style.float = "left";
+            lfbox.style.marginLeft = "5px";
+            lfbox.style.width = "15px";
+            lfbox.style.backgroundColor = "red";
+            lfbox.style.height = Number(textbox.value) + "px";
+            lfbox.style.float = "left";
+            //设置margin 至于最底下
+            lfbox.style.marginTop = heimargin + "px";
+            lfbox.onclick = function() {
+                numbox.removeChild(this);
+            }
+        } else {
+            alert("只能输入60个值，最后输入为：" + textbox.value);
+        }
+
+    }
+
+    function rightIn() {
+        if (!Number(textbox.value) || textbox.value < 10 || textbox.value > 100 || textbox.value == "") {
+            alert("请输入10到100之间的数字");
+            return false;
+        }
+        createDiv();
+        numbox.appendChild(lfbox);
+        textbox.value = "";
+    };
+
+    function leftIn() {
+        if (!Number(textbox.value) || textbox.value < 10 || textbox.value > 100 || textbox.value == "") {
+            alert("请输入10到100之间的数字");
+            return false;
+        }
+        createDiv();
+        numbox.insertBefore(lfbox, numbox.firstChild);
+        textbox.value = "";
+    };
+
+    function leftOut() {
+        if (numbox.childNodes.length == 0) {
+            alert("全删完啦");
+            return false
+        };
+        var hei = numbox.firstChild.style.height.split("px")[0];
+        alert("移除最左侧数字：" + hei);
+        numbox.removeChild(numbox.firstChild);
+    };
+
+    function rightOut() {
+        if (numbox.childNodes.length == 0) {
+            alert("全删完啦");
+            return false
+        };
+        var hei = numbox.lastChild.style.height.split("px")[0];
+        alert("移除最右侧数字：" + hei);
+        numbox.removeChild(numbox.lastChild);
+    };
+
+    function sortNum() {
+        var addDiv = numbox.getElementsByTagName("div");
+        var array = new Array();
+        var tmp, tmp2, hei, hei2, heinum, hei2num, heimar, hei2mar;
+         array=convertListToArray(addDiv);
+        
+        for ( var j = 0, len = array.length; j < len; j++ ) {
+        	
+         for (var i = 0, len = array.length; i < len ; i++) {
+         		
+                hei = array[i].style.height;
+                hei2 = array[i+1].style.height;
+                heinum = Number(hei.split("px")[0]);
+                hei2num = Number(hei2.split("px")[0]);
+                heimar = array[i].style.marginTop;
+                hei2mar = array[i+1].style.marginTop;
+                if (heinum > hei2num) {
+                    tmp = hei;
+                    array[i].style.height = hei2;
+                    array[i+1].style.height = tmp;
+                    tmp2 = heimar;
+                    array[i].style.marginTop = hei2mar;
+                    array[i+1].style.marginTop = tmp2;
+
+                }
+            }
+        }
+        return addDiv;
+
+    }
+
+    function convertListToArray(nodes) {
+    var array = null;
+    try{
+        array = Array.prototype.slice.call(nodes,0);
+    }catch(ex){
+        array = new Array();
+        for(var i = 0,len = nodes.length;i < len;i++) {
+            array.push(nodes[i]);
+        }
+    }
+
+    return array;
+}
+
+    sortbot.onclick = sortNum;
+    left_in.onclick = leftIn;
+    right_in.onclick = rightIn;
+    right_out.onclick = rightOut;
+    left_out.onclick = leftOut;
+    </script>
+</body>
+
+</html>

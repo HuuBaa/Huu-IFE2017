@@ -36,10 +36,7 @@
     var numbox = document.getElementById("numbox");
 
     function createDiv() {
-    	if ((!Number(textbox.value) && textbox.value != 0) || textbox.value == "") {       	
-            alert("请输入数字");
-            return false
-        }
+
         lfbox = document.createElement("div"); //不用var 全局用
         var lfbox_num = document.createTextNode(textbox.value);
         lfbox.appendChild(lfbox_num);
@@ -61,13 +58,21 @@
 
 
     function rightIn() {
+        if ((!Number(textbox.value) && textbox.value != 0) || textbox.value == "") {        
+            alert("请输入数字");
+            return false
+        }        
         createDiv();
         numbox.appendChild(lfbox);
         textbox.value = "";
     }
 
 
-    function leftIn() { 	
+    function leftIn() {
+        if ((!Number(textbox.value) && textbox.value != 0) || textbox.value == "") {        
+            alert("请输入数字");
+            return false
+        }    	
         createDiv();
         numbox.insertBefore(lfbox, numbox.firstChild);
 		textbox.value = "";
