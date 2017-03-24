@@ -72,11 +72,13 @@
 
     function secrchText(){
     	var st_val = searchtext.value;
-    	var reg_sch = new RegExp("["+st_val+"]","gi");
-    	alert(reg_sch);
+    	var reg_sch = new RegExp("["+st_val+"]","i");
+    
     	for (var i = 0; i < numbox.childNodes.length; i++) {
-    		if (reg_sch.test(numbox.childNodes[i].innerText)){
-    			numbox.childNodes[i].className = "matched";   		 
+    		reg_sch.lastIndex = 0;
+    		if (reg_sch.test(numbox.childNodes[i].innerText)){	
+    			numbox.childNodes[i].className = "matched";
+
     		}else{
     			numbox.childNodes[i].className = "addbox";
     		}
@@ -84,15 +86,16 @@
     }
 
     function rightIn() {
-        if (textbox.value == "") {
+        if (!textbox.value) {
             alert("请输入内容");
             return false
         }
         var textbox_arr = textbox.value.split(reg);        
         for (var i = 0; i < textbox_arr.length; i++) {
+        	if (!textbox_arr[i]) continue;
         	var valarr = textbox_arr[i];
         	var addbox = document.createElement("div");
-        	var addbox_str = document.createTextNode(valarr);         
+        	var addbox_str = document.createTextNode(valarr); 
         	addbox.appendChild(addbox_str);
         	numbox.appendChild(addbox);
         	addbox.className = "addbox";
@@ -106,12 +109,13 @@
 
 
     function leftIn() {
-        if (textbox.value == "") {
+        if (!textbox.value) {
             alert("请输入内容");
             return false
         }
         var textbox_arr = textbox.value.split(reg);        
-        for (var i = 0; i < textbox_arr.length; i++) {        	
+        for (var i = 0; i < textbox_arr.length; i++) {
+        	if (!textbox_arr[i]) continue;        	
         	var valarr = textbox_arr[i];
         	var addbox = document.createElement("div");
         	var addbox_str = document.createTextNode(valarr);         
