@@ -31,7 +31,8 @@
         margin-left: 30px;
     }
     
-    .addbox,.matched {
+    .addbox,
+    .matched {
         border: 1px solid red;
         background-color: red;
         color: white;
@@ -41,9 +42,10 @@
         padding: 10px;
         line-height: 30px;
     }
-    .matched{
-    	background-color: yellow;
-    	color: black;
+    
+    .matched {
+        background-color: yellow;
+        color: black;
     }
     </style>
 </head>
@@ -58,6 +60,7 @@
     <input type="submit" value="搜索" id="search">
     <div id="numbox"></div>
     <script>
+    
     var textbox = document.getElementById("textbox");
     var left_in = document.getElementById("left_in");
     var right_in = document.getElementById("right_in");
@@ -65,24 +68,22 @@
     var right_out = document.getElementById("right_out");
     var numbox = document.getElementById("numbox");
     var searchtext = document.getElementById("searchtext");
-    
-	var search = document.getElementById("search");
-	var reg = /[,，、\s]/g;
-    
+    var search = document.getElementById("search");
+    var reg = /[,，、\s]/g;
 
-    function secrchText(){
-    	var st_val = searchtext.value;
-    	var reg_sch = new RegExp("["+st_val+"]","i");
-    
-    	for (var i = 0; i < numbox.childNodes.length; i++) {
-    		reg_sch.lastIndex = 0;
-    		if (reg_sch.test(numbox.childNodes[i].innerText)){	
-    			numbox.childNodes[i].className = "matched";
 
-    		}else{
-    			numbox.childNodes[i].className = "addbox";
-    		}
-    	}
+    function secrchText() {
+        var st_val = searchtext.value;
+        var reg_sch = new RegExp("[" + st_val + "]", "i");
+        for (var i = 0; i < numbox.childNodes.length; i++) {
+            reg_sch.lastIndex = 0;
+            if (reg_sch.test(numbox.childNodes[i].innerText)) {
+                numbox.childNodes[i].className = "matched";
+
+            } else {
+                numbox.childNodes[i].className = "addbox";
+            }
+        }
     }
 
     function rightIn() {
@@ -90,20 +91,20 @@
             alert("请输入内容");
             return false
         }
-        var textbox_arr = textbox.value.split(reg);        
+        var textbox_arr = textbox.value.split(reg);
         for (var i = 0; i < textbox_arr.length; i++) {
-        	if (!textbox_arr[i]) continue;
-        	var valarr = textbox_arr[i];
-        	var addbox = document.createElement("div");
-        	var addbox_str = document.createTextNode(valarr); 
-        	addbox.appendChild(addbox_str);
-        	numbox.appendChild(addbox);
-        	addbox.className = "addbox";
-        	addbox.onclick = function() {
-            	numbox.removeChild(this);
-        	};
+            if (!textbox_arr[i]) continue;
+            var valarr = textbox_arr[i];
+            var addbox = document.createElement("div");
+            var addbox_str = document.createTextNode(valarr);
+            addbox.appendChild(addbox_str);
+            numbox.appendChild(addbox);
+            addbox.className = "addbox";
+            addbox.onclick = function() {
+                numbox.removeChild(this);
+            };
         }
-        
+
         textbox.value = "";
     }
 
@@ -113,20 +114,20 @@
             alert("请输入内容");
             return false
         }
-        var textbox_arr = textbox.value.split(reg);        
+        var textbox_arr = textbox.value.split(reg);
         for (var i = 0; i < textbox_arr.length; i++) {
-        	if (!textbox_arr[i]) continue;        	
-        	var valarr = textbox_arr[i];
-        	var addbox = document.createElement("div");
-        	var addbox_str = document.createTextNode(valarr);         
-        	addbox.appendChild(addbox_str);
-        	numbox.insertBefore(addbox, numbox.firstChild);
-        	addbox.className = "addbox";
-        	addbox.onclick = function() {
-            	numbox.removeChild(this);
-        	};
-        }        
-        
+            if (!textbox_arr[i]) continue;
+            var valarr = textbox_arr[i];
+            var addbox = document.createElement("div");
+            var addbox_str = document.createTextNode(valarr);
+            addbox.appendChild(addbox_str);
+            numbox.insertBefore(addbox, numbox.firstChild);
+            addbox.className = "addbox";
+            addbox.onclick = function() {
+                numbox.removeChild(this);
+            };
+        }
+
 
         textbox.value = "";
     }
