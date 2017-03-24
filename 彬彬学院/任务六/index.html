@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>task6</title>
+    <style>
+    #left-out {
+        margin-left: 40px;
+    }
+    
+    input {
+        border: 1px solid #ccc;
+    }
+    
+    input[type="submit"] {
+        border-radius: 4px;
+        background-color: transparent;
+    }
+    
+    #textbox {
+        float: left;
+        margin-right: 20px;
+    }
+    
+    #right_in {
+        margin-right: 30px;
+    }
+    
+    #searchtext {
+        margin-left: 30px;
+    }
+    
+    .addbox,.matched {
+        border: 1px solid red;
+        background-color: red;
+        color: white;
+        height: 30px;
+        float: left;
+        margin: 10px;
+        padding: 10px;
+        line-height: 30px;
+    }
+    .matched{
+    	background-color: yellow;
+    	color: black;
+    }
+    </style>
+</head>
+
+<body>
+    <textarea type="text" id="textbox" cols="25" rows="10"></textarea>
+    <input type="submit" value="左侧入" id="left_in">
+    <input type="submit" value="右侧入" id="right_in">
+    <input type="submit" value="左侧出" id="left_out">
+    <input type="submit" value="右侧出" id="right_out">
+    <input type="text" value="" placeholder="输入要查询的值" id="searchtext">
+    <input type="submit" value="搜索" id="search">
+    <div id="numbox"></div>
+    <script>
+    var textbox = document.getElementById("textbox");
+    var left_in = document.getElementById("left_in");
+    var right_in = document.getElementById("right_in");
+    var left_out = document.getElementById("left_out");
+    var right_out = document.getElementById("right_out");
+    var numbox = document.getElementById("numbox");
+    var searchtext = document.getElementById("searchtext");
+    
+	var search = document.getElementById("search");
+	var reg = /[,，、\s]/g;
+    
+
+    function secrchText(){
+    	var st_val = searchtext.value;
+    	var reg_sch = new RegExp("["+st_val+"]","gi");
+    	alert(reg_sch);
+    	for (var i = 0; i < numbox.childNodes.length; i++) {
+    		if (reg_sch.test(numbox.childNodes[i].innerText)){
+    			numbox.childNodes[i].className = "matched";   		 
+    		}else{
+    			numbox.childNodes[i].className = "addbox";
+    		}
+    	}
+    }
+
+    function rightIn() {
+        if (textbox.value == "") {
+            alert("请输入内容");
+            return false
+        }
+        var textbox_arr = textbox.value.split(reg);        
+        for (var i = 0; i < textbox_arr.length; i++) {
+        	var valarr = textbox_arr[i];
+        	var addbox = document.createElement("div");
+        	var addbox_str = document.createTextNode(valarr);         
+        	addbox.appendChild(addbox_str);
+        	numbox.appendChild(addbox);
+        	addbox.className = "addbox";
+        	addbox.onclick = function() {
+            	numbox.removeChild(this);
+        	};
+        }
+        
+        textbox.value = "";
+    }
+
+
+    function leftIn() {
+        if (textbox.value == "") {
+            alert("请输入内容");
+            return false
+        }
+        var textbox_arr = textbox.value.split(reg);        
+        for (var i = 0; i < textbox_arr.length; i++) {        	
+        	var valarr = textbox_arr[i];
+        	var addbox = document.createElement("div");
+        	var addbox_str = document.createTextNode(valarr);         
+        	addbox.appendChild(addbox_str);
+        	numbox.insertBefore(addbox, numbox.firstChild);
+        	addbox.className = "addbox";
+        	addbox.onclick = function() {
+            	numbox.removeChild(this);
+        	};
+        }        
+        
+
+        textbox.value = "";
+    }
+
+
+    function leftOut() {
+        if (numbox.childNodes.length == 0) {
+            alert("全删完啦");
+            return false
+        }
+        alert("移除：" + numbox.firstChild.innerText);
+        numbox.removeChild(numbox.firstChild);
+
+    }
+
+
+    function rightOut() {
+        if (numbox.childNodes.length == 0) {
+            alert("全删完啦");
+            return false
+        }
+        alert("移除：" + numbox.lastChild.innerText);
+        numbox.removeChild(numbox.lastChild);
+
+    }
+    search.onclick = secrchText;
+    left_in.onclick = leftIn;
+    right_in.onclick = rightIn;
+    right_out.onclick = rightOut;
+    left_out.onclick = leftOut;
+    </script>
+</body>
+
+</html>
