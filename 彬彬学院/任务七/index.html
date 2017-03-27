@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>task7</title>
+    <style>
+    .binary {
+        border: 1px solid black;
+    }
+    
+    .rt1 {
+        width: 884px;
+        height: 200px;
+        margin: 0 auto;
+        padding: 10px;
+    }
+    
+    .rt2 {
+        width: 400px;
+        padding: 10px;
+        margin: 10px;
+        height: 158px;
+        float: left;
+    }
+    
+    .rt3 {
+        width: 158px;
+        padding: 10px;
+        margin: 10px;
+        height: 116px;
+        float: left;
+    }
+    
+    .rt4 {
+        width: 37px;
+        padding: 10px;
+        margin: 10px;
+        height: 73px;
+        float: left;
+    }
+    
+    input {
+        margin-left: 30px;
+        margin-top: 40px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class=" binary rt1">
+        <div class="binary rt2">
+            <div class="binary rt3">
+                <div class="binary rt4"></div>
+                <div class="binary rt4"></div>
+            </div>
+            <div class="binary rt3">
+                <div class="binary rt4"></div>
+                <div class="binary rt4"></div>
+            </div>
+        </div>
+        <div class="binary rt2">
+            <div class="binary rt3">
+                <div class="binary rt4"></div>
+                <div class="binary rt4"></div>
+            </div>
+            <div class="binary rt3">
+                <div class="binary rt4"></div>
+                <div class="binary rt4"></div>
+            </div>
+        </div>
+    </div>
+    <input type="submit" class="pre" value="前序遍历">
+    <input type="submit" class="in" value="中序遍历">
+    <input type="submit" class="post" value="后序遍历">
+    <script>
+    var rt1 = document.querySelector(".rt1");
+    var bot1 = document.querySelector(".pre");
+    var bot2 = document.querySelector(".in");
+    var bot3 = document.querySelector(".post");
+    var binary = document.querySelectorAll(".binary");
+    var arr = new Array();
+    var timer;
+
+    function preOrder(node) {
+        if (node != null) {
+            arr.push(node);
+            preOrder(node.firstElementChild);
+            preOrder(node.lastElementChild);
+        }
+    }
+
+    function inOrder(node) {
+        if (node != null) {
+            inOrder(node.firstElementChild);
+            arr.push(node);
+            inOrder(node.lastElementChild);
+        }
+    }
+
+    function postOrder(node) {
+        if (node != null) {
+            postOrder(node.firstElementChild);
+            postOrder(node.lastElementChild);
+            arr.push(node);
+        }
+    }
+
+    function render(arr) {
+        var i = 0;
+        timer = setInterval(function() {
+            if (arr[i - 1]) {
+                arr[i - 1].removeAttribute("style");
+            }
+            if (i < arr.length) {
+                arr[i].style.backgroundColor = "red";
+                if (arr[i].children[0]) {
+                    arr[i].children[0].style.backgroundColor = "white";
+                }
+                if (arr[i].children[1]) {
+                    arr[i].children[1].style.backgroundColor = "white";
+                }
+                i = i + 1;
+            } else {
+                clearInterval(timer);
+
+            }
+
+        }, 500);
+
+    }
+    //清空arr，清除计时器，清除样式
+    function clear() {
+        for (var i = 0; i < binary.length; i++) {
+            binary[i].removeAttribute("style");
+        }
+        clearInterval(timer);
+        arr = [];
+    }
+
+
+    bot1.onclick = function() {
+        clear();
+        preOrder(rt1);
+        render(arr);
+    }
+    bot2.onclick = function() {
+        clear();
+        inOrder(rt1);
+        render(arr);
+    }
+    bot3.onclick = function() {
+        clear();
+        postOrder(rt1);
+        render(arr);
+    }
+
+
+    /*function disabledBot() {
+        bot1.setAttribute("disabled", "disabled");
+        bot2.setAttribute("disabled", "disabled");
+        bot3.setAttribute("disabled", "disabled");
+    }
+
+    function enabledBot() {
+        bot1.removeAttribute("disabled");
+        bot2.removeAttribute("disabled");
+        bot3.removeAttribute("disabled");
+    }可以在遍历过程展示时禁用按键，已采用clear()代替效果更好*/
+
+    </script>
+</body>
+
+</html>
