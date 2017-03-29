@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>task8</title>
+    <title>task9</title>
     <style>
     div {
         border: 1px solid black;
@@ -24,6 +24,11 @@
     
     .white {
         background-color: white;
+    }
+    
+    .choosed {
+        background-color: orange;
+        border: 2px dotted black;
     }
     </style>
 </head>
@@ -59,18 +64,32 @@
         </div>
         <div>fish</div>
     </div>
-    <br>
+    
     <input type="submit" value="开始遍历" id="startT">
-    <br>
-    <br>
     <input type="text" placeholder="输入查找内容" id="sec_text">
     <input type="submit" value="查找" id="sec">
+    <br>
+    <br>
+    <input type="text" placeholder="输入增加内容" id="add_text">
+    <input type="submit" value="添加" id="add">
+    <br>
+    <br>
+    <input type="submit" value="删除选中元素" id="del">
+    <input type="submit" value="取消选中" id="clearCho">
+    <br>
+    <br>
+    <input type="submit" value="还原" id="recover">
     <script>
+    var body = document.getElementsByTagName("body")[0];
     var container = document.querySelector("#container");
-    var alldiv = document.querySelectorAll("div");
     var startT = document.getElementById('startT');
     var sec = document.getElementById('sec');
     var sec_text = document.getElementById('sec_text');
+    var add_text = document.getElementById('add_text');
+    var add = document.getElementById('add');
+    var del = document.getElementById('del');
+    var clearCho = document.getElementById("clearCho");
+    var recover = document.getElementById("recover");
     var arr = new Array();
     var delay = 500;
     var timer1;
@@ -78,6 +97,7 @@
     var num;
 
     function clear() {
+        var alldiv = document.querySelectorAll("div");
         for (var i = 0; i < alldiv.length; i++) {
             alldiv[i].removeAttribute("style");
             alldiv[i].removeAttribute("class");
@@ -125,7 +145,7 @@
         timer2 = setInterval(function() {
             if (i < arr.length) {
                 if (sec_val.test(arr[i].firstChild.nodeValue)) {
-                    arr[i].className = "yellow";//添加class进行标志
+                    arr[i].className = "yellow"; //添加class进行标志
                     num = num + 1; //记录发现的个数
                     for (var j = 0; j < arr[i].children.length; j++) {
                         arr[i].children[j].className = "white";
@@ -147,6 +167,50 @@
 
     }
 
+    function clickDis(eve) {
+        clear();
+        Traversal(container);
+        for (var i = 0; i < arr.length; i++) {
+            arr[i].onclick = function(event) {
+                this.className = "choosed";
+                //取消冒泡事件
+                event = event || window.event;
+                if (event.stopPropagation) {
+                    event.stopPropagation();
+                } else {
+                    event.cancelBubble = true; //ie
+                }
+            }
+        }
+    }
+
+    function delDiv() {
+        var choosed = document.querySelectorAll(".choosed");
+        for (var i = 0; i < choosed.length; i++) {
+            choosed[i].parentNode.removeChild(choosed[i]);
+        }
+    }
+
+    function appDiv() {
+        var choosed = document.querySelectorAll(".choosed");
+        for (var i = 0; i < choosed.length; i++) {
+            var apptext = document.createTextNode(add_text.value)
+            var appdiv = document.createElement("div");
+            appdiv.appendChild(apptext);
+            choosed[i].appendChild(appdiv);
+        }
+    }
+
+    function insertAfter(newElement, targetElement) {
+        var parent = targetElement.parentNode
+        if (parent.lastChild == targetElement) {
+            parent.appendChild(newElement)
+        } else {
+            parent.insertBefore(newElement, targetElement.nextSibling)
+        }
+    }
+
+
     startT.onclick = function() {
         clear();
         Traversal(container);
@@ -161,12 +225,21 @@
         Traversal(container);
         renderArr(arr)
         search(arr);
-
-
     }
-
-    /*
-     */
+    del.onclick = function() {
+        delDiv();
+    }
+    add.onclick = function() {
+        appDiv();
+        clickDis();
+    }
+    clearCho.onclick = function() {
+        clear();
+    }
+    recover.onclick = function() {
+        document.location.reload();
+    }
+    window.onload = clickDis;
     </script>
 </body>
 
