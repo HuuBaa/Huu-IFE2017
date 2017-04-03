@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>task1</title>
+    <style>
+    .form {
+        margin: 0 auto;
+        width: 500px;
+        margin-top: 50px;
+    }
+    
+    #bot {
+        margin-left: 10px;
+        height: 1.6em;
+        font: 1.4em "微软雅黑";
+        background-color: #135BD6;
+        color: white;
+        border: none;
+        border-radius: 5px;
+    }
+    
+    #lab_text {
+        font: 1.4em "微软雅黑";
+        margin-right: 20px;
+    }
+    
+    #name_text {
+        font: 1.6em "微软雅黑";
+        border: 2px solid #aaa;
+        border-radius: 5px;
+    }
+    
+    #info {
+        font: 1em "微软雅黑";
+        color: #aaa;
+        margin: 0 auto;
+        padding-left: 35px;
+        width: 400px;
+    }
+    </style>
+</head>
+
+<body>
+   
+        <div class="form">
+            <label for="name_text" id="lab_text">名称</label>
+            <input type="text" id="name_text" value="">
+            <button id="bot">验证</button>
+        </div>
+        <div id="info">
+            <p>必填，长度为4~16个字符</p>
+        </div>
+  
+    <script>
+    var name_text = document.getElementById('name_text');
+    var info = document.getElementById('info');
+    var bot = document.getElementById('bot');
+
+    function getLen(str){
+    	return	str.replace(/[^\u0000-\u00ff]/g,"AA").length;
+    }    
+    function textValidate() {
+    	var strlength = getLen(name_text.value);
+        if (name_text.value=="") {
+            name_text.style.borderColor = "red";
+            info.style.color = "red";
+            info.innerHTML = "<p>名字不能为空</p>";
+       }else if(strlength<=16 && strlength>=4){
+       	    name_text.style.borderColor = "#06CF3C";
+            info.style.color = "#06CF3C";
+            info.innerHTML = "<p>名称格式正确</p>";
+       }else{
+       		name_text.style.borderColor = "#aaa";
+            info.style.color = "#aaa";
+            info.innerHTML = "<p>必填，长度为4~16个字符</p>";
+       }
+      
+    }
+
+    bot.onclick = textValidate;
+
+
+    </script>
+</body>
+
+</html>
