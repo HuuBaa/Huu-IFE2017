@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>task2</title>
+</head>
+<style>
+.form {
+    display: table;
+    margin: 0 auto;
+    font-family: "微软雅黑";
+}
+
+.form>div {
+    display: table-row;
+}
+
+.form>div>label {
+    display: table-cell;
+    text-align: right;
+    margin-top: 10px;
+    font-size: 1.1em;
+}
+
+.form>div>input {
+    display: table-cell;
+    margin-top: 10px;
+    font-size: 1.1em;
+}
+
+.form>div>p {
+    margin: 5px 0 0 10px;
+    color: #999;
+    font-size: 1em;
+}
+
+.form>div>input {
+    width: 250px;
+    border-radius: 5px;
+    border: 1px solid #999;
+    margin-left: 10px;
+}
+
+#submit {
+    font-size: 1.1em;
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid blue;
+    width: 6em;
+    height: 2em;
+    position: relative;
+    left: 59%;
+    top: 10px;
+}
+</style>
+
+<body>
+    <div class="form">
+        <div class="name">
+            <label for="name">名称</label>
+            <input type="text" id="name" value="">
+        </div>
+        <div class="pass1">
+            <label for="pass1">密码</label>
+            <input type="password" id="pass1" value="">
+        </div>
+        <div class="pass2">
+            <label for="pass2">密码确认</label>
+            <input type="password" id="pass2" value="">
+        </div>
+        <div class="email">
+            <label for="email">邮箱</label>
+            <input type="email" id="email" value="">
+        </div>
+        <div class="phone">
+            <label for="phone">手机</label>
+            <input type="text" id="phone" value="">
+        </div>
+    </div>
+    <button id="submit">提交</button>
+    <script>
+    /*var name_str = "必填，长度为4-16个字符"
+                                    var name_form = document.getElementById("name");
+                                    var pass1_str = "请输入密码";
+                                    var pass1_form = document.getElementById("pass1");
+                                    var pass2_str = "请再次输入相同密码";
+                                    var pass2_form = document.getElementById("pass2");
+                                    var email_str = "请输入邮箱地址";
+                                    var email_form = document.getElementById("email");
+                                    var phone_str = "请输入13位手机号码";
+                                    var phone_form = document.getElementById("phone");*/
+    var submit = document.getElementById("submit");
+    var form_input = document.querySelectorAll("input");
+    var focus_text = [
+        "必填，长度为4-16个字符",
+        "请输入密码，6-14位非空字符",
+        "请再次输入相同密码",
+        "请输入邮箱地址",
+        "请输入11位手机号码"
+    ];
+    var nameOK,
+        pass1OK,
+        pass2OK,
+        emailOK,
+        phoneOK;
+    //改变inpute的样式的函数
+    function styleChange(id, str, color_bor, color_para) {
+        var form = document.getElementById(id);
+        form.style.boxShadow = "0 0 2px " + color_bor;
+        if (form.parentNode.children.length == 3) {
+            form.parentNode.removeChild(form.parentNode.lastElementChild);
+        };
+        var text = document.createTextNode(str);
+        var para = document.createElement("p");
+        para.appendChild(text);
+        form.parentNode.appendChild(para);
+        para.style.color = color_para;
+    }
+
+    function addFocus() {
+        for (var i = 0; i < form_input.length; i++) {
+            (function(i) { //闭包，这个i为形参
+                var id = form_input[i].getAttribute("id");
+                form_input[i].onfocus = function() {
+                    styleChange(id, focus_text[i], "blue", "#999")
+                }
+            })(i); //这个i是for中的i作为参数
+        }
+    }
+
+    function getLen(str) {
+        return str.replace(/[^\u0000-\u00ff]/g, "AA").length;
+    }
+
+    function nameValidate() {
+        var strlen = getLen(form_input[0].value);
+        var id = form_input[0].getAttribute("id");
+        if (strlen >= 4 && strlen <= 16) { //格式正确            
+            styleChange(id, "名称格式正确", "#9B3", "#9B3");
+            nameOK = true;
+        } else {
+            styleChange(id, "名称格式不正确", "red", "red");
+
+        }
+    }
+
+    function pass1Validate() {
+        var strlen = getLen(form_input[1].value);
+        var id = form_input[1].getAttribute("id");
+        var reg = /\S{6,14}/
+        if (strlen >= 6 && strlen <= 14 && reg.test(form_input[1].value)) {
+            styleChange(id, "密码格式正确", "#9B3", "#9B3");
+            pass1OK = true;
+        } else {
+            styleChange(id, "密码格式不正确", "red", "red");
+
+        }
+    }
+
+    function pass2Validate() {
+        var id = form_input[2].getAttribute("id");
+        if (form_input[2].value == form_input[1].value) {
+            styleChange(id, "密码输入一致", "#9B3", "#9B3");
+            pass2OK = true;
+        } else {
+            styleChange(id, "密码输入不一致", "red", "red");
+
+        }
+    }
+
+    function emailValidate() {
+        var id = form_input[3].getAttribute("id");
+        var reg = /^[\w-]+@[\w-]+(\.[\w-]+)+$/;
+        
+        if (reg.test(form_input[3].value)) {
+            styleChange(id, "邮箱格式正确", "#9B3", "#9B3");
+            emailOK = true;
+        } else {
+            styleChange(id, "邮箱格式错误", "red", "red");
+
+        }
+    }
+
+    function phoneValidate() {
+        var strlen = getLen(form_input[4].value);
+        var id = form_input[4].getAttribute("id");
+        var reg = /\d{11}/;
+        if (strlen == 11 && reg.test(form_input[4].value)) {
+            styleChange(id, "号码格式正确", "#9B3", "#9B3");
+            phoneOK = true;
+        } else {
+            styleChange(id, "号码格式不正确", "red", "red");
+
+        }
+
+    }
+    window.onload = addFocus();
+    submit.onclick = function() {
+        nameOK = false;
+        nameOK = false;
+        pass1OK = false;
+        pass2OK = false;
+        emailOK = false;
+        phoneOK = false;
+        nameValidate();
+        pass1Validate();
+        pass2Validate();
+        emailValidate();
+        phoneValidate();
+        if (nameOK && pass1OK && pass2OK && emailOK && phoneOK) {
+            alert("验证通过");
+        }else{
+            alert("输入有误");
+        }
+    }
+    form_input[0].onblur = nameValidate;
+    form_input[1].onblur = pass1Validate;
+    form_input[2].onblur = pass2Validate;
+    form_input[3].onblur = emailValidate;
+    form_input[4].onblur = phoneValidate;
+    </script>
+</body>
+
+</html>
