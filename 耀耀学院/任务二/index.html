@@ -82,15 +82,15 @@
     <button id="submit">提交</button>
     <script>
     /*var name_str = "必填，长度为4-16个字符"
-                                    var name_form = document.getElementById("name");
-                                    var pass1_str = "请输入密码";
-                                    var pass1_form = document.getElementById("pass1");
-                                    var pass2_str = "请再次输入相同密码";
-                                    var pass2_form = document.getElementById("pass2");
-                                    var email_str = "请输入邮箱地址";
-                                    var email_form = document.getElementById("email");
-                                    var phone_str = "请输入13位手机号码";
-                                    var phone_form = document.getElementById("phone");*/
+                                                    var name_form = document.getElementById("name");
+                                                    var pass1_str = "请输入密码";
+                                                    var pass1_form = document.getElementById("pass1");
+                                                    var pass2_str = "请再次输入相同密码";
+                                                    var pass2_form = document.getElementById("pass2");
+                                                    var email_str = "请输入邮箱地址";
+                                                    var email_form = document.getElementById("email");
+                                                    var phone_str = "请输入13位手机号码";
+                                                    var phone_form = document.getElementById("phone");*/
     var submit = document.getElementById("submit");
     var form_input = document.querySelectorAll("input");
     var focus_text = [
@@ -140,6 +140,8 @@
         if (strlen >= 4 && strlen <= 16) { //格式正确            
             styleChange(id, "名称格式正确", "#9B3", "#9B3");
             nameOK = true;
+        } else if (form_input[0].value == "") {
+            styleChange(id, "名称不能为空", "red", "red");
         } else {
             styleChange(id, "名称格式不正确", "red", "red");
 
@@ -153,6 +155,8 @@
         if (strlen >= 6 && strlen <= 14 && reg.test(form_input[1].value)) {
             styleChange(id, "密码格式正确", "#9B3", "#9B3");
             pass1OK = true;
+        } else if (form_input[1].value == "") {
+            styleChange(id, "密码不能为空", "red", "red");
         } else {
             styleChange(id, "密码格式不正确", "red", "red");
 
@@ -161,7 +165,9 @@
 
     function pass2Validate() {
         var id = form_input[2].getAttribute("id");
-        if (form_input[2].value == form_input[1].value) {
+        if (form_input[2].value == "") {
+            styleChange(id, "密码不能为空", "red", "red");
+        } else if (form_input[2].value == form_input[1].value) {
             styleChange(id, "密码输入一致", "#9B3", "#9B3");
             pass2OK = true;
         } else {
@@ -173,10 +179,12 @@
     function emailValidate() {
         var id = form_input[3].getAttribute("id");
         var reg = /^[\w-]+@[\w-]+(\.[\w-]+)+$/;
-        
+
         if (reg.test(form_input[3].value)) {
             styleChange(id, "邮箱格式正确", "#9B3", "#9B3");
             emailOK = true;
+        } else if (form_input[3].value == "") {
+            styleChange(id, "邮箱不能为空", "red", "red");
         } else {
             styleChange(id, "邮箱格式错误", "red", "red");
 
@@ -190,6 +198,8 @@
         if (strlen == 11 && reg.test(form_input[4].value)) {
             styleChange(id, "号码格式正确", "#9B3", "#9B3");
             phoneOK = true;
+        } else if (form_input[4].value == "") {
+            styleChange(id, "号码不能为空", "red", "red");
         } else {
             styleChange(id, "号码格式不正确", "red", "red");
 
@@ -211,7 +221,7 @@
         phoneValidate();
         if (nameOK && pass1OK && pass2OK && emailOK && phoneOK) {
             alert("验证通过");
-        }else{
+        } else {
             alert("输入有误");
         }
     }
