@@ -160,7 +160,7 @@
         <div id="in_school">
             <div>
                 <label for="area">学校</label>
-                <select name="area" id="area" onchange="changeArea()">
+                <select name="area" id="area" >
                     <option value="上海">上海</option>
                     <option value="北京">北京</option>
                     <option value="浙江" selected>浙江</option>
@@ -226,6 +226,7 @@
     }
     document.getElementById("student").onclick=function(){changeS(this)};
     document.getElementById("work").onclick=function(){changeS(this)};
+    area.onchange=function(){onchange=changeArea()};
     </script>
 </body>
 
