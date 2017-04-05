@@ -87,7 +87,6 @@
     .radio input:checked+label::after {
         background-color: white;
     }
-    
     /*select {
         position: relative;
         /*很关键：将默认的select选择框样式清除
@@ -100,7 +99,6 @@
         display: inline-block;
         position: relative;
     }
-    
     /*#in_school>div:first-child::after {
     	display: inline;
         content: "";
@@ -160,9 +158,8 @@
             <label for="work">非在校生</label>
         </div>
         <div id="in_school">
-            
             <div>
-            <label for="area">学校</label>
+                <label for="area">学校</label>
                 <select name="area" id="area" onchange="changeArea()">
                     <option value="上海">上海</option>
                     <option value="北京">北京</option>
@@ -192,42 +189,42 @@
             <input type="text" name="work_place" id="work_place">
         </div>
     </div>
+    <script>
+    var in_school = document.getElementById("in_school");
+    var out_school = document.getElementById("out_school");
+    var area = document.getElementById("area");
+    var sh_school = document.getElementById("sh_school");
+    var bj_school = document.getElementById("bj_school");
+    var zj_school = document.getElementById("zj_school");
+
+    function Change(obj) {
+        if (obj.value == "student") {
+            in_school.className = ""
+            out_school.className = "none"
+        } else {
+            in_school.className = "none"
+            out_school.className = ""
+        }
+    }
+
+    function changeArea() {
+        if (area.value == "上海") {
+            sh_school.className = "";
+            bj_school.className = "none";
+            zj_school.className = "none";
+        } else if (area.value == "北京") {
+            sh_school.className = "none";
+            bj_school.className = "";
+            zj_school.className = "none";
+
+        } else if (area.value == "浙江") {
+            sh_school.className = "none";
+            bj_school.className = "none";
+            zj_school.className = "";
+
+        }
+    }
+    </script>
 </body>
-<script>
-var in_school = document.getElementById("in_school");
-var out_school = document.getElementById("out_school");
-var area = document.getElementById("area");
-var sh_school = document.getElementById("sh_school");
-var bj_school = document.getElementById("bj_school");
-var zj_school = document.getElementById("zj_school");
-
-function Change(obj) {
-    if (obj.value == "student") {
-        in_school.className = ""
-        out_school.className = "none"
-    } else {
-        in_school.className = "none"
-        out_school.className = ""
-    }
-}
-
-function changeArea() {
-    if (area.value == "上海") {
-        sh_school.className = "";
-        bj_school.className = "none";
-        zj_school.className = "none";
-    } else if (area.value == "北京") {
-        sh_school.className = "none";
-        bj_school.className = "";
-        zj_school.className = "none";
-
-    } else if (area.value == "浙江") {
-        sh_school.className = "none";
-        bj_school.className = "none";
-        zj_school.className = "";
-
-    }
-}
-</script>
 
 </html>
