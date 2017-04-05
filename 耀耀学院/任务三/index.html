@@ -150,10 +150,10 @@
 <body>
     <div class="form">
         <div class="radio">
-            <input type="radio" name="studentwork" id="student" value="student" checked onclick="changeS(this)">
+            <input type="radio" name="studentwork" id="student" value="student" checked >
             <label for="student"></label>
             <label for="student" id="label_stu">在校生</label>
-            <input type="radio" name="studentwork" id="work" value="work" onclick="changeS(this)">
+            <input type="radio" name="studentwork" id="work" value="work" >
             <label for="work"></label>
             <label for="work">非在校生</label>
         </div>
@@ -224,6 +224,8 @@
 
         }
     }
+    document.getElementById("student").onclick=function(){changeS(this)};
+    document.getElementById("work").onclick=function(){changeS(this)};
     </script>
 </body>
 
