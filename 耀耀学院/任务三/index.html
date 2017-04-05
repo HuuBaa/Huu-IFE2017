@@ -150,10 +150,10 @@
 <body>
     <div class="form">
         <div class="radio">
-            <input type="radio" name="studentwork" id="student" value="student" checked onclick="Change(this)">
+            <input type="radio" name="studentwork" id="student" value="student" checked onclick="changeS(this)">
             <label for="student"></label>
             <label for="student" id="label_stu">在校生</label>
-            <input type="radio" name="studentwork" id="work" value="work" onclick="Change(this)">
+            <input type="radio" name="studentwork" id="work" value="work" onclick="changeS(this)">
             <label for="work"></label>
             <label for="work">非在校生</label>
         </div>
@@ -197,7 +197,7 @@
     var bj_school = document.getElementById("bj_school");
     var zj_school = document.getElementById("zj_school");
 
-    function Change(obj) {
+    function ChangeS(obj) {
         if (obj.value == "student") {
             in_school.className = ""
             out_school.className = "none"
