@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>task3</title>
+    <style>
+    .none {
+        display: none;
+    }
+    
+    .form {
+        padding-top: 50px;
+        padding-left: 300px;
+    }
+    
+    #label_stu {
+        margin-right: 100px;
+    }
+    
+    #out_school>label {
+        margin-left: -2em;
+        margin-right: 2em;
+    }
+    
+    #in_school,
+    #out_school {
+        margin-top: 40px;
+    }
+    
+    #area {
+        margin-left: 30px;
+        border-radius: 3px;
+        width: 150px;
+        height: 2.5em;
+        border: 1px #aaa solid;
+    }
+    
+    #sh_school,
+    #bj_school,
+    #zj_school {
+        margin-left: 60px;
+        border-radius: 3px;
+        width: 350px;
+        height: 2.5em;
+        border: 1px #aaa solid;
+    }
+    
+    #work_place {
+        border-radius: 3px;
+        width: 450px;
+        height: 2em;
+        border: 1px #aaa solid;
+    }
+    
+    .radio input {
+        display: none;
+    }
+    
+    .radio input+label {
+        display: inline-block;
+        position: relative;
+        border-radius: 50%;
+        border: 1px #aaa solid;
+        width: 14px;
+        height: 14px;
+        margin-left: 68px;
+    }
+    
+    .radio input+label::after {
+        content: " ";
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 6px;
+        height: 6px;
+        margin-top: -3px;
+        margin-left: -3px;
+    }
+    
+    .radio input:checked+label {
+        background-color: #338ef0;
+        border-color: #338ef0;
+    }
+    
+    .radio input:checked+label::after {
+        background-color: white;
+    }
+    
+    /*select {
+        position: relative;
+        /*很关键：将默认的select选择框样式清除
+        appearance: none;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+    }*/
+    
+    #in_school div {
+        display: inline-block;
+        position: relative;
+    }
+    
+    /*#in_school>div:first-child::after {
+    	display: inline;
+        content: "";
+        width: 0px;
+        border: 4px solid black;
+        border-color: transparent transparent black transparent;
+        position: absolute;
+        margin-top: 7px;
+        margin-left: -7%;
+    }
+    
+    #in_school>div:first-child::before {
+    	display: inline;
+        content: "";
+        width: 0px;
+        border: 4px solid black;
+        border-color: black transparent transparent transparent;
+        position: absolute;
+        margin-top: 18px;
+        margin-left: 93%;
+        z-index: 2;
+    }
+    
+    #in_school>div:last-child::after {
+    	display: inline;
+        content: "";
+        width: 0px;
+        border: 4px solid black;
+        border-color: transparent transparent black transparent;
+        position: absolute;
+        margin-top: 7px;
+        margin-left: -6%;
+    }
+    
+    #in_school>div:last-child::before {
+    	display: inline;
+        content: "";
+        width: 0px;
+        border: 4px solid black;
+        border-color: black transparent transparent transparent;
+        position: absolute;
+        margin-top: 18px;
+        margin-left: 94%;
+        z-index: 2;
+    }*/
+    </style>
+</head>
+
+<body>
+    <div class="form">
+        <div class="radio">
+            <input type="radio" name="studentwork" id="student" value="student" checked onclick="Change(this)">
+            <label for="student"></label>
+            <label for="student" id="label_stu">在校生</label>
+            <input type="radio" name="studentwork" id="work" value="work" onclick="Change(this)">
+            <label for="work"></label>
+            <label for="work">非在校生</label>
+        </div>
+        <div id="in_school">
+            
+            <div>
+            <label for="area">学校</label>
+                <select name="area" id="area" onchange="changeArea()">
+                    <option value="上海">上海</option>
+                    <option value="北京">北京</option>
+                    <option value="浙江" selected>浙江</option>
+                </select>
+            </div>
+            <div>
+                <select name="sh_school" id="sh_school" class="none">
+                    <option value="上海理工大学">上海理工大学</option>
+                    <option value="上海外国语大学">上海外国语大学</option>
+                    <option value="上海交通大学">上海交通大学</option>
+                </select>
+                <select name="bj_school" id="bj_school" class="none">
+                    <option value="北京理工大学">北京理工大学</option>
+                    <option value="北京外国语大学">北京外国语大学</option>
+                    <option value="北京交通大学">北京交通大学</option>
+                </select>
+                <select name="zj_school" id="zj_school">
+                    <option value="浙江大学">浙江大学</option>
+                    <option value="浙江工业大学">浙江工业大学</option>
+                    <option value="浙江理工大学">浙江理工大学</option>
+                </select>
+            </div>
+        </div>
+        <div id="out_school" class="none">
+            <label for="work_place" id="label_plc">就业单位</label>
+            <input type="text" name="work_place" id="work_place">
+        </div>
+    </div>
+</body>
+<script>
+var in_school = document.getElementById("in_school");
+var out_school = document.getElementById("out_school");
+var area = document.getElementById("area");
+var sh_school = document.getElementById("sh_school");
+var bj_school = document.getElementById("bj_school");
+var zj_school = document.getElementById("zj_school");
+
+function Change(obj) {
+    if (obj.value == "student") {
+        in_school.className = ""
+        out_school.className = "none"
+    } else {
+        in_school.className = "none"
+        out_school.className = ""
+    }
+}
+
+function changeArea() {
+    if (area.value == "上海") {
+        sh_school.className = "";
+        bj_school.className = "none";
+        zj_school.className = "none";
+    } else if (area.value == "北京") {
+        sh_school.className = "none";
+        bj_school.className = "";
+        zj_school.className = "none";
+
+    } else if (area.value == "浙江") {
+        sh_school.className = "none";
+        bj_school.className = "none";
+        zj_school.className = "";
+
+    }
+}
+</script>
+
+</html>

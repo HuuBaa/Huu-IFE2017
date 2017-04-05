@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+.checkbox{
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+.checkBox+label{
+  width:16px;
+  height: 16px;
+  border:1px solid #d9d9d9;
+  display: -webkit-flex;
+  display:flex;
+}
+.checkBox:checked+label{
+   border:1px solid #d73d32;
+   font-weight: 700;
+}
+.checkBox:checked+label::after{
+  margin: auto;
+  content: '\2714';
+  color: red;
+  width:8px;
+  height:8px;
+  line-height: 8px;
+  text-align: center;
+  font-size: 12px;
+}
+input{
+  margin:0;
+  display: none;
+}
+	</style>
+</head>
+<body>
+        <div class="checkbox">
+
+            <input type="checkbox" name="" id="checkBox" class="checkBox">
+            <label for="checkBox"></label>
+        </div>
+</body>
+</html>
