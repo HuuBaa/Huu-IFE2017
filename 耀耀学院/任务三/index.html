@@ -32,7 +32,7 @@
         margin-left: 30px;
         border-radius: 3px;
         width: 150px;
-        height: 2.5em;
+        height: 3em;
         border: 1px #aaa solid;
     }
     
@@ -42,7 +42,7 @@
         margin-left: 60px;
         border-radius: 3px;
         width: 350px;
-        height: 2.5em;
+        height: 3em;
         border: 1px #aaa solid;
     }
     
@@ -87,19 +87,21 @@
     .radio input:checked+label::after {
         background-color: white;
     }
-    /*select {
+    select {
         position: relative;
-        /*很关键：将默认的select选择框样式清除
+        很关键：将默认的select选择框样式清除
         appearance: none;
         -moz-appearance: none;
         -webkit-appearance: none;
-    }*/
-    
+        background: url("tri1.png") no-repeat scroll right center transparent;
+    }
+    select::-ms-expand { display: none; }
+    /*
     #in_school div {
         display: inline-block;
         position: relative;
     }
-    /*#in_school>div:first-child::after {
+    #in_school>div:first-child::after {
     	display: inline;
         content: "";
         width: 0px;
@@ -150,39 +152,35 @@
 <body>
     <div class="form">
         <div class="radio">
-            <input type="radio" name="studentwork" id="student" value="student" checked >
+            <input type="radio" name="studentwork" id="student" value="student" checked>
             <label for="student"></label>
             <label for="student" id="label_stu">在校生</label>
-            <input type="radio" name="studentwork" id="work" value="work" >
+            <input type="radio" name="studentwork" id="work" value="work">
             <label for="work"></label>
             <label for="work">非在校生</label>
         </div>
         <div id="in_school">
-            <div>
-                <label for="area">学校</label>
-                <select name="area" id="area" >
-                    <option value="上海">上海</option>
-                    <option value="北京">北京</option>
-                    <option value="浙江" selected>浙江</option>
-                </select>
-            </div>
-            <div>
-                <select name="sh_school" id="sh_school" class="none">
-                    <option value="上海理工大学">上海理工大学</option>
-                    <option value="上海外国语大学">上海外国语大学</option>
-                    <option value="上海交通大学">上海交通大学</option>
-                </select>
-                <select name="bj_school" id="bj_school" class="none">
-                    <option value="北京理工大学">北京理工大学</option>
-                    <option value="北京外国语大学">北京外国语大学</option>
-                    <option value="北京交通大学">北京交通大学</option>
-                </select>
-                <select name="zj_school" id="zj_school">
-                    <option value="浙江大学">浙江大学</option>
-                    <option value="浙江工业大学">浙江工业大学</option>
-                    <option value="浙江理工大学">浙江理工大学</option>
-                </select>
-            </div>
+            <label for="area">学校</label>
+            <select name="area" id="area">
+                <option value="上海">上海</option>
+                <option value="北京">北京</option>
+                <option value="浙江" selected>浙江</option>
+            </select>
+            <select name="sh_school" id="sh_school" class="none">
+                <option value="上海理工大学">上海理工大学</option>
+                <option value="上海外国语大学">上海外国语大学</option>
+                <option value="上海交通大学">上海交通大学</option>
+            </select>
+            <select name="bj_school" id="bj_school" class="none">
+                <option value="北京理工大学">北京理工大学</option>
+                <option value="北京外国语大学">北京外国语大学</option>
+                <option value="北京交通大学">北京交通大学</option>
+            </select>
+            <select name="zj_school" id="zj_school">
+                <option value="浙江大学">浙江大学</option>
+                <option value="浙江工业大学">浙江工业大学</option>
+                <option value="浙江理工大学">浙江理工大学</option>
+            </select>
         </div>
         <div id="out_school" class="none">
             <label for="work_place" id="label_plc">就业单位</label>
@@ -224,9 +222,15 @@
 
         }
     }
-    document.getElementById("student").onclick=function(){changeS(this)};
-    document.getElementById("work").onclick=function(){changeS(this)};
-    area.onchange=function(){onchange=changeArea()};
+    document.getElementById("student").onclick = function() {
+        changeS(this)
+    };
+    document.getElementById("work").onclick = function() {
+        changeS(this)
+    };
+    area.onchange = function() {
+        onchange = changeArea()
+    };
     </script>
 </body>
 
