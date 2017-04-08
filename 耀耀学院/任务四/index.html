@@ -267,9 +267,9 @@
         <input type="text" id="cmd" value="">
         <input type="submit" value="执行" id="cmd_sub">
         <br>
-        <input type="submit" value="TUR LEF" id="turlef">
-        <input type="submit" value="TUR RIG" id="turrig">
-        <input type="submit" value="TUR BAC" id="turbac">
+        <input type="submit" value="TUN LEF" id="turlef">
+        <input type="submit" value="TUN RIG" id="turrig">
+        <input type="submit" value="TUN BAC" id="turbac">
         <input type="submit" value="GO" id="turngo">
 
     </div>
@@ -292,13 +292,13 @@ function turnMove() {
     switch (movediv_trans) {
         case 0:
             switch (cmd_value) {
-                case "TUR LEF":
+                case "TUN LEF":
                     movediv.style.transform = "rotate(-90deg)";
                     break;
-                case "TUR RIG":
+                case "TUN RIG":
                     movediv.style.transform = "rotate(90deg)";
                     break;
-                case "TUR BAC":
+                case "TUN BAC":
                     movediv.style.transform = "rotate(180deg)";
                     break;
                 case "GO":
@@ -314,13 +314,13 @@ function turnMove() {
 
         case -90:
             switch (cmd_value) {
-                case "TUR LEF":
+                case "TUN LEF":
                     movediv.style.transform = "rotate(180deg)";
                     break;
-                case "TUR RIG":
+                case "TUN RIG":
                     movediv.style.transform = "rotate(0deg)";
                     break;
-                case "TUR BAC":
+                case "TUN BAC":
                     movediv.style.transform = "rotate(90deg)";
                     break;
                 case "GO":
@@ -335,13 +335,13 @@ function turnMove() {
             break;
         case 90:
             switch (cmd_value) {
-                case "TUR LEF":
+                case "TUN LEF":
                     movediv.style.transform = "rotate(0deg)";
                     break;
-                case "TUR RIG":
+                case "TUN RIG":
                     movediv.style.transform = "rotate(180deg)";
                     break;
-                case "TUR BAC":
+                case "TUN BAC":
                     movediv.style.transform = "rotate(-90deg)";
                     break;
                 case "GO":
@@ -358,13 +358,13 @@ function turnMove() {
 
         case 180:
             switch (cmd_value) {
-                case "TUR LEF":
+                case "TUN LEF":
                     movediv.style.transform = "rotate(90deg)";
                     break;
-                case "TUR RIG":
+                case "TUN RIG":
                     movediv.style.transform = "rotate(-90deg)";
                     break;
-                case "TUR BAC":
+                case "TUN BAC":
                     movediv.style.transform = "rotate(0deg)";
                     break;
                 case "GO":
@@ -383,15 +383,15 @@ function turnMove() {
 
 cmd_sub.onclick = turnMove;
 turlef.onclick = function(){
-    cmd_input.value = "TUR LEF";
+    cmd_input.value = "TUN LEF";
     turnMove();
 }
 turrig.onclick = function(){
-    cmd_input.value = "TUR RIG";
+    cmd_input.value = "TUN RIG";
     turnMove();
 }
 turbac.onclick = function(){
-    cmd_input.value = "TUR BAC";
+    cmd_input.value = "TUN BAC";
     turnMove();
 }
 turgo.onclick = function(){
