@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>task4</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .wrap {
+        width: 500px;
+        border: 2px solid black;
+        margin: 0 auto 0;
+        position: relative;
+    }
+    
+    .wrap1 {
+        width: 500px;
+        margin: 100px auto 0;
+    }
+    
+    .wrap1 table td {
+        border: none;
+        text-align: center;
+    }
+    
+    .wrap2 {
+        position: absolute;
+        margin-right: 0;
+        left: 50%;
+        margin-left: -300px;
+    }
+    
+    .wrap2 table td {
+        border: none;
+        text-align: center;
+    }
+    
+    #movediv {
+        width: 50px;
+        height: 50px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        background-color: red;
+        border-top:14px blue solid;
+        
+
+    }
+    
+    table {
+        border-spacing: 0;
+        border-collapse: collapse;
+    }
+    
+    td {
+        border: 1px solid #aaa;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        width: 50px;
+        height: 50px;
+    }
+    
+    #cmd,
+    #cmd_sub {
+        border-radius: 3px;
+        border: 1px solid #aaa;
+        height: 2em;
+    }
+    
+    #cmd {
+        width: 200px;
+    }
+    
+    .wrap3 {
+        width: 300px;
+        margin: 30px auto;
+        position: relative;
+        left: -100px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="wrap1">
+        <table class="table1">
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+            </tr>
+        </table>
+    </div>
+    <div class="wrap2">
+        <table class="table2">
+            <tr>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>7</td>
+            </tr>
+            <tr>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>9</td>
+            </tr>
+            <tr>
+                <td>10</td>
+            </tr>
+        </table>
+    </div>
+    <div class="wrap">
+        <div id="movediv"   style =" position: absolute; left: 200px;
+        top: 200px;">
+        </div>
+        <table>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <div class="wrap3">
+        <input type="text" id="cmd" value="">
+        <input type="submit" value="执行" id="cmd_sub">
+        <br>
+        <input type="submit" value="TUR LEF" id="turlef">
+        <input type="submit" value="TUR RIG" id="turrig">
+        <input type="submit" value="TUR BAC" id="turbac">
+        <input type="submit" value="GO" id="turngo">
+
+    </div>
+</body>
+<script>
+var movediv = document.getElementById('movediv');
+var cmd_input = document.getElementById('cmd');
+var cmd_sub = document.getElementById('cmd_sub');
+var turlef = document.getElementById('turlef');
+var turrig = document.getElementById('turrig');
+var turbac = document.getElementById('turbac');
+var turgo = document.getElementById('turngo');
+ movediv.style.transform = "rotate(0deg)";
+
+function turnMove() {
+    var lef_num = parseInt(movediv.style.left);
+    var top_num = parseInt(movediv.style.top);   
+    var cmd_value = cmd_input.value;
+    var movediv_trans = parseInt(movediv.style.transform.replace(/[^0-9\-]/g, "")) //获取现在transform的值
+
+    switch (movediv_trans) {
+        case 0:
+            switch (cmd_value) {
+                case "TUR LEF":
+                    movediv.style.transform = "rotate(-90deg)";
+                    break;
+                case "TUR RIG":
+                    movediv.style.transform = "rotate(90deg)";
+                    break;
+                case "TUR BAC":
+                    movediv.style.transform = "rotate(180deg)";
+                    break;
+                case "GO":
+                    top_num = top_num-50;
+                    if (top_num<0) {
+                        alert("不能移出边框外");
+                        return false;
+                    }
+                    movediv.style.top = top_num+"px";
+                    break;
+            }
+            break;
+
+        case -90:
+            switch (cmd_value) {
+                case "TUR LEF":
+                    movediv.style.transform = "rotate(180deg)";
+                    break;
+                case "TUR RIG":
+                    movediv.style.transform = "rotate(0deg)";
+                    break;
+                case "TUR BAC":
+                    movediv.style.transform = "rotate(90deg)";
+                    break;
+                case "GO":
+                    lef_num = lef_num-50;
+                    if (lef_num<0) {
+                        alert("不能移出边框外");
+                        return false;
+                    }
+                    movediv.style.left = lef_num+"px";
+                    break;
+            }
+            break;
+        case 90:
+            switch (cmd_value) {
+                case "TUR LEF":
+                    movediv.style.transform = "rotate(0deg)";
+                    break;
+                case "TUR RIG":
+                    movediv.style.transform = "rotate(180deg)";
+                    break;
+                case "TUR BAC":
+                    movediv.style.transform = "rotate(-90deg)";
+                    break;
+                case "GO":
+                    lef_num = lef_num+50;
+                    if (lef_num>450) {
+                        alert("不能移出边框外");
+                        return false;
+                    }
+                    movediv.style.left = lef_num+"px";
+                    break;                   
+            }
+            break;
+
+
+        case 180:
+            switch (cmd_value) {
+                case "TUR LEF":
+                    movediv.style.transform = "rotate(90deg)";
+                    break;
+                case "TUR RIG":
+                    movediv.style.transform = "rotate(-90deg)";
+                    break;
+                case "TUR BAC":
+                    movediv.style.transform = "rotate(0deg)";
+                    break;
+                case "GO":
+                    top_num = top_num+50;
+                    if (top_num>450) {
+                        alert("不能移出边框外");
+                        return false;
+                    }
+                    movediv.style.top = top_num+"px";
+                    break;                  
+            }
+            break;
+    }
+
+}
+
+cmd_sub.onclick = turnMove;
+turlef.onclick = function(){
+    cmd_input.value = "TUR LEF";
+    turnMove();
+}
+turrig.onclick = function(){
+    cmd_input.value = "TUR RIG";
+    turnMove();
+}
+turbac.onclick = function(){
+    cmd_input.value = "TUR BAC";
+    turnMove();
+}
+turgo.onclick = function(){
+    cmd_input.value = "GO";
+    turnMove();
+}
+</script>
+
+</html>
