@@ -9,10 +9,11 @@ body{
 	float: left;
 	padding: 10px;	
 }
-.div div:first-child{	
+.div div:first-child{
+height: 50px;	
 	background-color: #fff;
 	border: #999 solid 1px;
-	height: 50px;
+	
 }
 
 

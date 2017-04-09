@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>task3-4</title>
+    <style type="text/css">
+    .box {
+        position: relative;
+        width: 500px;
+        height: 500px;
+        margin: 100px auto 20px auto;
+        border: 2px solid black;
+    }
+    
+    .container {
+        width: 100%;
+        height: 100%;
+        font-size: 0;
+    }
+    
+    .container div {
+        box-sizing: border-box;
+        width: 10%;
+        height: 10%;
+        display: inline-block;
+        border-right: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+    }
+    
+    .cont_row {
+    	height: 10%;
+        position: absolute;
+        margin-top: -50px;
+        width: 100%;
+        
+    }
+    
+    .cont_row div,
+    .cont_col div {
+        height: 50px;
+        width: 50px;
+        float: left;
+        display: inline-block;
+        text-align: center;
+        line-height: 50px;
+    }
+    
+    .cont_col {
+        position: absolute;
+        margin-top: -500px;
+        margin-left: -50px;
+        width: 10%;
+        height: 100%;
+    }
+    
+    form {
+        margin-top: 30px;
+    }
+    
+    #myBox {
+        position: absolute;
+        box-sizing: border-box;
+        width: 50px;
+        height: 50px;
+        background-color: #ec3325;
+        border: none;
+        transition: all 1s linear;
+    }
+    
+    #myHead {
+        position: absolute;
+        box-sizing: border-box;
+        width: 50px;
+        height: 15px;
+        background-color: #001df5;
+        border: none;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="cont_row">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+            <div>10</div>
+        </div>
+        <div class="container">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div id="myBox" style="top: 350px;left: 250px;">
+                <div id="myHead"></div>
+            </div>
+        </div>
+        <div class="cont_col">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+            <div>10</div>
+        </div>
+        <form action="#">
+            <input style="width:200px; height: 25px; " type="text" id="order">
+            <input type="button" value="执行" id="action">
+        </form>
+        <p>指令有：GO：向蓝色边所面向的方向前进一格
+            <br> TUN LEF：向左转（逆时针旋转90度）
+            <br> TUN RIG：向右转（顺时针旋转90度）
+            <br> TUN BAC：向右转（旋转180度）</p>
+    </div>
+    <script>
+    //规定方向 1：上， 2：右 ，3：下， 4：左。di属性储存方向值,方向控制go命令的走法
+    //旋转   注意累计角度值即可
+    var act = document.getElementById("action");
+    var order = document.getElementById("order");
+    var mybox = document.getElementById("myBox");
+    var angle = 0; //角度计数
+    var count = 1; //计步
+    mybox.di = 1;
+
+    function takeOrder() {
+
+        if (order.value == "TUN LEF") {
+            //为了不出现负方向先进行判断
+            if (mybox.di == 1) {
+                mybox.di = 4;
+            } else {
+                mybox.di = (mybox.di - 1) % 4;
+            }
+            mybox.style.transform = "rotate(" + (angle - 90) + "deg)";
+            angle = -90 + angle;
+            console.log(mybox.di);
+        }
+        if (order.value == "TUN RIG") {
+            if (mybox.di == 3) {
+                mybox.di = 4;
+            } else {
+                mybox.di = (mybox.di + 1) % 4;
+            }
+            mybox.style.transform = "rotate(" + (angle + 90) + "deg)";
+            angle = 90 + angle;
+            console.log(mybox.di);
+        }
+        if (order.value == "TUN BAC") {
+            if (mybox.di == 2) {
+                mybox.di = 4;
+            } else {
+                mybox.di = (mybox.di + 2) % 4;
+            }
+            mybox.style.transform = "rotate(" + (angle + 180) + "deg)";
+            angle = 180 + angle;
+            console.log(mybox.di);
+        }
+        if (order.value == "GO") {
+
+            if (mybox.di == 1) {
+                mybox.style.top == "0px" ? alert("出界") : mybox.style.top = (parseInt(mybox.style.top) - 50) + "px"
+            };
+            if (mybox.di == 2) {
+                mybox.style.left == "450px" ? alert("出界") : mybox.style.left = (parseInt(mybox.style.left) + 50) + "px"
+            };
+            if (mybox.di == 3) {
+                mybox.style.top == "450px" ? alert("出界") : mybox.style.top = (parseInt(mybox.style.top) + 50) + "px"
+            };
+            if (mybox.di == 4) {
+                mybox.style.left == "0px" ? alert("出界") : mybox.style.left = (parseInt(mybox.style.left) - 50) + "px"
+            };
+
+        }
+    }
+    window.onload = function() {
+        act.onclick = takeOrder;
+    }
+    </script>
+</body>
+
+</html>
