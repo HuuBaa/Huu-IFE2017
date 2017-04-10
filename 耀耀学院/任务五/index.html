@@ -314,6 +314,11 @@
         <input type="text" id="text_input" value="">
         <input type="submit" value="执行" id="cmd_sub">
         <br>
+        <input type="submit" value="TUN LEF" id="turlef">
+        <input type="submit" value="TUN RIG" id="turrig">
+        <input type="submit" value="TUN BAC" id="turbac">
+        <input type="submit" value="GO" id="turngo">
+        <br>
         <input type="submit" value="TAR LEF" id="TARlef">
         <input type="submit" value="TAR RIG" id="TARrig">
         <input type="submit" value="TAR TOP" id="TARtop">
@@ -326,8 +331,13 @@
     </div>
     <script>
     var movediv = document.getElementById('movediv');
+    var dir = "U";//div朝向上右下左，对应0123
     var text_input = document.getElementById('text_input');
     var cmd_sub = document.getElementById('cmd_sub');
+    var turlef = document.getElementById('turlef');
+    var turrig = document.getElementById('turrig');
+    var turbac = document.getElementById('turbac');
+    var turgo = document.getElementById('turngo');
     var TARlef = document.getElementById('TARlef');
     var TARrig = document.getElementById('TARrig');
     var TARtop = document.getElementById('TARtop');
@@ -336,22 +346,123 @@
     var MOVrig = document.getElementById('MOVrig');
     var MOVtop = document.getElementById('MOVtop');
     var MOVbot = document.getElementById('MOVbot');
-
     movediv.style.transform = "rotate(0deg)";
 
-    var movediv_trans = parseInt(movediv.style.transform.replace(/[^0-9\-]/g, ""))
-        //获取现在transform的值
+
     function tarMove() {
+        var movediv_trans = parseInt(movediv.style.transform.replace(/[^0-9\-]/g, ""))
+        //获取现在transform的值
         var lef_num = parseInt(movediv.style.left);
         var top_num = parseInt(movediv.style.top);
         var text_value = text_input.value;
+        switch (dir) {
+            case "U":
+                switch (text_value) {
+                    case "TUN LEF":
+                        movediv.style.transform = "rotate("+(movediv_trans-90)+"deg)";
+                        dir="L";
+                        break;
+                    case "TUN RIG":
+                        movediv.style.transform = "rotate("+(movediv_trans+90)+"deg)";
+                        dir="R";
+                        break;
+                    case "TUN BAC":
+                        movediv.style.transform = "rotate("+(movediv_trans+180)+"deg)";
+                        break;
+                        dir="B";
+                    case "GO":
+                        top_num = top_num - 50;
+                        if (top_num < 0) {
+                            alert("不能移出边框外");
+                            return false;
+                        }
+                        movediv.style.top = top_num + "px";
+                        break;
+                }
+                break;
+
+            case "L":
+                switch (text_value) {
+                    case "TUN LEF":
+                        movediv.style.transform = "rotate("+(movediv_trans-90)+"deg)";
+                        dir="B";
+                        break;
+                    case "TUN RIG":
+                        movediv.style.transform = "rotate("+(movediv_trans+90)+"deg)";
+                        dir="U";
+                        break;
+                    case "TUN BAC":
+                        movediv.style.transform = "rotate("+(movediv_trans+180)+"deg)";
+                        dir="R";
+                        break;
+                    case "GO":
+                        lef_num = lef_num - 50;
+                        if (lef_num < 0) {
+                            alert("不能移出边框外");
+                            return false;
+                        }
+                        movediv.style.left = lef_num + "px";
+                        break;
+                }
+                break;
+            case "R":
+                switch (text_value) {
+                    case "TUN LEF":
+                        movediv.style.transform = "rotate("+(movediv_trans-90)+"deg)";
+                        dir="U";
+                        break;                       
+                    case "TUN RIG":
+                        movediv.style.transform = "rotate("+(movediv_trans+90)+"deg)";
+                        dir="B";
+                        break;                        
+                    case "TUN BAC":
+                        movediv.style.transform = "rotate("+(movediv_trans+180)+"deg)";
+                        dir="L";
+                        break;
+                    case "GO":
+                        lef_num = lef_num + 50;
+                        if (lef_num > 450) {
+                            alert("不能移出边框外");
+                            return false;
+                        }
+                        movediv.style.left = lef_num + "px";
+                        break;
+                }
+                break;
+
+
+            case "B":
+                switch (text_value) {
+                    case "TUN LEF":
+                        movediv.style.transform = "rotate("+(movediv_trans-90)+"deg)";
+                        dir = "R";
+                        break;
+                    case "TUN RIG":
+                        movediv.style.transform = "rotate("+(movediv_trans+90)+"deg)";
+                        dir = "L";
+                        break;
+                    case "TUN BAC":
+                        movediv.style.transform = "rotate("+(movediv_trans+180)+"deg)";
+                        dir = "U";
+                        break;
+                    case "GO":
+                        top_num = top_num + 50;
+                        if (top_num > 450) {
+                            alert("不能移出边框外");
+                            return false;
+                        }
+                        movediv.style.top = top_num + "px";
+                        break;
+                }
+                break;
+        }
 
         switch (text_value) {
-            case "TAR LEF":
+            case "TAR LEF":               
                 if (lef_num - 50 < 0) {
                     alert("不能移动到框外");
                     return false;
-                }
+                }              
                 movediv.style.left = (lef_num - 50) + "px";
                 break;
             case "TAR RIG":
@@ -387,6 +498,7 @@
                     alert("不能移动到框外");
                     return false;
                 }
+                dir = "L";
                 movediv.style.left = (lef_num - 50) + "px";
                 break;
             case "MOV RIG":
@@ -400,6 +512,7 @@
                     alert("不能移动到框外");
                     return false;
                 }
+                dir = "R";
                 movediv.style.left = (lef_num + 50) + "px";
                 break;
             case "MOV TOP":
@@ -412,6 +525,7 @@
                     alert("不能移动到框外");
                     return false;
                 }
+                  dir = "U";
                 movediv.style.top = (top_num - 50) + "px";
                 break;
             case "MOV BOT":
@@ -424,6 +538,7 @@
                     alert("不能移动到框外");
                     return false;
                 }
+                dir = "B";
                 movediv.style.top = (top_num + 50) + "px";
                 break;
 
@@ -465,6 +580,22 @@
     }
     MOVbot.onclick = function() {
         text_input.value = "MOV BOT";
+        tarMove();
+    }
+        turlef.onclick = function() {
+        text_input.value = "TUN LEF";
+        tarMove();
+    }
+    turrig.onclick = function() {
+        text_input.value = "TUN RIG";
+        tarMove();
+    }
+    turbac.onclick = function() {
+        text_input.value = "TUN BAC";
+        tarMove();
+    }
+    turgo.onclick = function() {
+        text_input.value = "GO";
         tarMove();
     }
     </script>
