@@ -47,8 +47,55 @@
         -webkit-box-sizing: border-box;
         background-color: red;
         border-top: 14px blue solid;
- 
-       
+        transition-property: left, top, transform;
+        transition-duration: .5s;
+        animation-fill-mode: forwards;
+        animation-duration: .5s;
+    }
+    
+    @keyframes mymove {
+        0% {
+            border-radius: 0%;
+        }
+        33% {
+            border-radius: 50%;
+        }
+        66% {
+            border-radius: 50%;
+        }
+        100% {
+            border-radius: 0%;
+        }
+    }
+    
+    @-moz-keyframes mymove {
+        0% {
+            border-radius: 0%;
+        }
+        33% {
+            border-radius: 50%;
+        }
+        66% {
+            border-radius: 50%;
+        }
+        100% {
+            border-radius: 0%;
+        }
+    }
+    
+    @-webkit-keyframes mymove {
+        0% {
+            border-radius: 0%;
+        }
+        33% {
+            border-radius: 50%;
+        }
+        66% {
+            border-radius: 50%;
+        }
+        100% {
+            border-radius: 0%;
+        }
     }
     
     table {
@@ -264,139 +311,161 @@
         </table>
     </div>
     <div class="wrap3">
-        <input type="text" id="cmd" value="">
+        <input type="text" id="text_input" value="">
         <input type="submit" value="执行" id="cmd_sub">
         <br>
-        <input type="submit" value="TUN LEF" id="turlef">
-        <input type="submit" value="TUN RIG" id="turrig">
-        <input type="submit" value="TUN BAC" id="turbac">
-        <input type="submit" value="GO" id="turngo">
+        <input type="submit" value="TAR LEF" id="TARlef">
+        <input type="submit" value="TAR RIG" id="TARrig">
+        <input type="submit" value="TAR TOP" id="TARtop">
+        <input type="submit" value="TAR BOT" id="TARbot">
+        <br>
+        <input type="submit" value="MOV LEF" id="MOVlef">
+        <input type="submit" value="MOV RIG" id="MOVrig">
+        <input type="submit" value="MOV TOP" id="MOVtop">
+        <input type="submit" value="MOV BOT" id="MOVbot">
     </div>
     <script>
     var movediv = document.getElementById('movediv');
-    var cmd_input = document.getElementById('cmd');
+    var text_input = document.getElementById('text_input');
     var cmd_sub = document.getElementById('cmd_sub');
-    var turlef = document.getElementById('turlef');
-    var turrig = document.getElementById('turrig');
-    var turbac = document.getElementById('turbac');
-    var turgo = document.getElementById('turngo');
+    var TARlef = document.getElementById('TARlef');
+    var TARrig = document.getElementById('TARrig');
+    var TARtop = document.getElementById('TARtop');
+    var TARbot = document.getElementById('TARbot');
+    var MOVlef = document.getElementById('MOVlef');
+    var MOVrig = document.getElementById('MOVrig');
+    var MOVtop = document.getElementById('MOVtop');
+    var MOVbot = document.getElementById('MOVbot');
+
     movediv.style.transform = "rotate(0deg)";
 
-
-    function turnMove() {
+    var movediv_trans = parseInt(movediv.style.transform.replace(/[^0-9\-]/g, ""))
+        //获取现在transform的值
+    function tarMove() {
         var lef_num = parseInt(movediv.style.left);
         var top_num = parseInt(movediv.style.top);
-        var cmd_value = cmd_input.value;
-        var movediv_trans = parseInt(movediv.style.transform.replace(/[^0-9\-]/g, "")) //获取现在transform的值
+        var text_value = text_input.value;
 
-        switch (movediv_trans) {
-            case 0:
-                switch (cmd_value) {
-                    case "TUN LEF":
-                        movediv.style.transform = "rotate(-90deg)";
-                        break;
-                    case "TUN RIG":
-                        movediv.style.transform = "rotate(90deg)";
-                        break;
-                    case "TUN BAC":
-                        movediv.style.transform = "rotate(180deg)";
-                        break;
-                    case "GO":
-                        top_num = top_num - 50;
-                        if (top_num < 0) {
-                            alert("不能移出边框外");
-                            return false;
-                        }
-                        movediv.style.top = top_num + "px";
-                        break;
+        switch (text_value) {
+            case "TAR LEF":
+                if (lef_num - 50 < 0) {
+                    alert("不能移动到框外");
+                    return false;
                 }
+                movediv.style.left = (lef_num - 50) + "px";
                 break;
-
-            case -90:
-                switch (cmd_value) {
-                    case "TUN LEF":
-                        movediv.style.transform = "rotate(180deg)";
-                        break;
-                    case "TUN RIG":
-                        movediv.style.transform = "rotate(0deg)";
-                        break;
-                    case "TUN BAC":
-                        movediv.style.transform = "rotate(90deg)";
-                        break;
-                    case "GO":
-                        lef_num = lef_num - 50;
-                        if (lef_num < 0) {
-                            alert("不能移出边框外");
-                            return false;
-                        }
-                        movediv.style.left = lef_num + "px";
-                        break;
+            case "TAR RIG":
+                if (lef_num + 50 > 450) {
+                    alert("不能移动到框外");
+                    return false;
                 }
+                movediv.style.left = (lef_num + 50) + "px";
                 break;
-            case 90:
-                switch (cmd_value) {
-                    case "TUN LEF":
-                        movediv.style.transform = "rotate(0deg)";
-                        break;
-                    case "TUN RIG":
-                        movediv.style.transform = "rotate(180deg)";
-                        break;
-                    case "TUN BAC":
-                        movediv.style.transform = "rotate(-90deg)";
-                        break;
-                    case "GO":
-                        lef_num = lef_num + 50;
-                        if (lef_num > 450) {
-                            alert("不能移出边框外");
-                            return false;
-                        }
-                        movediv.style.left = lef_num + "px";
-                        break;
+            case "TAR TOP":
+                if (top_num - 50 < 0) {
+                    alert("不能移动到框外");
+                    return false;
                 }
+                movediv.style.top = (top_num - 50) + "px";
+                break;
+            case "TAR BOT":
+                if (top_num + 50 > 450) {
+                    alert("不能移动到框外");
+                    return false;
+                }
+                movediv.style.top = (top_num + 50) + "px";
                 break;
 
 
-            case 180:
-                switch (cmd_value) {
-                    case "TUN LEF":
-                        movediv.style.transform = "rotate(90deg)";
-                        break;
-                    case "TUN RIG":
-                        movediv.style.transform = "rotate(-90deg)";
-                        break;
-                    case "TUN BAC":
-                        movediv.style.transform = "rotate(0deg)";
-                        break;
-                    case "GO":
-                        top_num = top_num + 50;
-                        if (top_num > 450) {
-                            alert("不能移出边框外");
-                            return false;
-                        }
-                        movediv.style.top = top_num + "px";
-                        break;
+            case "MOV LEF":
+                movediv.style.transform = "rotate(-90deg)";
+                movediv.style.animationName = "mymove";
+                var time = setTimeout(function() {
+                    movediv.style.animationName = "";
+                }, 500)
+                if (lef_num - 50 < 0) {
+                    alert("不能移动到框外");
+                    return false;
                 }
+                movediv.style.left = (lef_num - 50) + "px";
                 break;
+            case "MOV RIG":
+                movediv.style.transform = "rotate(90deg)";
+                movediv.style.animationName = "mymove";
+                var time = setTimeout(function() {
+                    movediv.style.animationName = "";
+                }, 500)
+
+                if (lef_num + 50 > 450) {
+                    alert("不能移动到框外");
+                    return false;
+                }
+                movediv.style.left = (lef_num + 50) + "px";
+                break;
+            case "MOV TOP":
+                movediv.style.transform = "rotate(0deg)";
+                movediv.style.animationName = "mymove";
+                var time = setTimeout(function() {
+                    movediv.style.animationName = "";
+                }, 500)
+                if (top_num - 50 < 0) {
+                    alert("不能移动到框外");
+                    return false;
+                }
+                movediv.style.top = (top_num - 50) + "px";
+                break;
+            case "MOV BOT":
+                movediv.style.transform = "rotate(180deg)";
+                movediv.style.animationName = "mymove";
+                var time = setTimeout(function() {
+                    movediv.style.animationName = "";
+                }, 500)
+                if (top_num + 50 > 450) {
+                    alert("不能移动到框外");
+                    return false;
+                }
+                movediv.style.top = (top_num + 50) + "px";
+                break;
+
         }
 
+
     }
 
-    cmd_sub.onclick = turnMove;
-    turlef.onclick = function() {
-        cmd_input.value = "TUN LEF";
-        turnMove();
+    cmd_sub.onclick = tarMove;
+
+    TARlef.onclick = function() {
+        text_input.value = "TAR LEF";
+        tarMove();
     }
-    turrig.onclick = function() {
-        cmd_input.value = "TUN RIG";
-        turnMove();
+    TARrig.onclick = function() {
+        text_input.value = "TAR RIG";
+        tarMove();
     }
-    turbac.onclick = function() {
-        cmd_input.value = "TUN BAC";
-        turnMove();
+    TARtop.onclick = function() {
+        text_input.value = "TAR TOP";
+        tarMove();
     }
-    turgo.onclick = function() {
-        cmd_input.value = "GO";
-        turnMove();
+    TARbot.onclick = function() {
+        text_input.value = "TAR BOT";
+        tarMove();
+    }
+
+    MOVlef.onclick = function() {
+        text_input.value = "MOV LEF";
+        tarMove();
+    }
+    MOVrig.onclick = function() {
+        text_input.value = "MOV RIG";
+        tarMove();
+    }
+    MOVtop.onclick = function() {
+        text_input.value = "MOV TOP";
+        tarMove();
+    }
+    MOVbot.onclick = function() {
+        text_input.value = "MOV BOT";
+        tarMove();
     }
     </script>
 </body>
