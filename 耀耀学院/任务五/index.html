@@ -109,8 +109,9 @@
         -moz-box-sizing: border-box;
         -webkit-box-sizing: border-box;
         width: 50px;
-        height: 50px;
+        height: 50px
     }
+    
     
     #cmd,
     #cmd_sub {
@@ -331,7 +332,7 @@
     </div>
     <script>
     var movediv = document.getElementById('movediv');
-    var dir = "U";//div朝向上右下左，对应0123
+    var dir = "U"; //div朝向上右下左，对应0123
     var text_input = document.getElementById('text_input');
     var cmd_sub = document.getElementById('cmd_sub');
     var turlef = document.getElementById('turlef');
@@ -351,7 +352,7 @@
 
     function tarMove() {
         var movediv_trans = parseInt(movediv.style.transform.replace(/[^0-9\-]/g, ""))
-        //获取现在transform的值
+            //获取现在transform的值
         var lef_num = parseInt(movediv.style.left);
         var top_num = parseInt(movediv.style.top);
         var text_value = text_input.value;
@@ -359,17 +360,17 @@
             case "U":
                 switch (text_value) {
                     case "TUN LEF":
-                        movediv.style.transform = "rotate("+(movediv_trans-90)+"deg)";
-                        dir="L";
+                        movediv.style.transform = "rotate(" + (movediv_trans - 90) + "deg)";
+                        dir = "L";
                         break;
                     case "TUN RIG":
-                        movediv.style.transform = "rotate("+(movediv_trans+90)+"deg)";
-                        dir="R";
+                        movediv.style.transform = "rotate(" + (movediv_trans + 90) + "deg)";
+                        dir = "R";
                         break;
                     case "TUN BAC":
-                        movediv.style.transform = "rotate("+(movediv_trans+180)+"deg)";
+                        movediv.style.transform = "rotate(" + (movediv_trans + 180) + "deg)";
                         break;
-                        dir="B";
+                        dir = "B";
                     case "GO":
                         top_num = top_num - 50;
                         if (top_num < 0) {
@@ -384,16 +385,16 @@
             case "L":
                 switch (text_value) {
                     case "TUN LEF":
-                        movediv.style.transform = "rotate("+(movediv_trans-90)+"deg)";
-                        dir="B";
+                        movediv.style.transform = "rotate(" + (movediv_trans - 90) + "deg)";
+                        dir = "B";
                         break;
                     case "TUN RIG":
-                        movediv.style.transform = "rotate("+(movediv_trans+90)+"deg)";
-                        dir="U";
+                        movediv.style.transform = "rotate(" + (movediv_trans + 90) + "deg)";
+                        dir = "U";
                         break;
                     case "TUN BAC":
-                        movediv.style.transform = "rotate("+(movediv_trans+180)+"deg)";
-                        dir="R";
+                        movediv.style.transform = "rotate(" + (movediv_trans + 180) + "deg)";
+                        dir = "R";
                         break;
                     case "GO":
                         lef_num = lef_num - 50;
@@ -408,16 +409,16 @@
             case "R":
                 switch (text_value) {
                     case "TUN LEF":
-                        movediv.style.transform = "rotate("+(movediv_trans-90)+"deg)";
-                        dir="U";
-                        break;                       
+                        movediv.style.transform = "rotate(" + (movediv_trans - 90) + "deg)";
+                        dir = "U";
+                        break;
                     case "TUN RIG":
-                        movediv.style.transform = "rotate("+(movediv_trans+90)+"deg)";
-                        dir="B";
-                        break;                        
+                        movediv.style.transform = "rotate(" + (movediv_trans + 90) + "deg)";
+                        dir = "B";
+                        break;
                     case "TUN BAC":
-                        movediv.style.transform = "rotate("+(movediv_trans+180)+"deg)";
-                        dir="L";
+                        movediv.style.transform = "rotate(" + (movediv_trans + 180) + "deg)";
+                        dir = "L";
                         break;
                     case "GO":
                         lef_num = lef_num + 50;
@@ -434,15 +435,15 @@
             case "B":
                 switch (text_value) {
                     case "TUN LEF":
-                        movediv.style.transform = "rotate("+(movediv_trans-90)+"deg)";
+                        movediv.style.transform = "rotate(" + (movediv_trans - 90) + "deg)";
                         dir = "R";
                         break;
                     case "TUN RIG":
-                        movediv.style.transform = "rotate("+(movediv_trans+90)+"deg)";
+                        movediv.style.transform = "rotate(" + (movediv_trans + 90) + "deg)";
                         dir = "L";
                         break;
                     case "TUN BAC":
-                        movediv.style.transform = "rotate("+(movediv_trans+180)+"deg)";
+                        movediv.style.transform = "rotate(" + (movediv_trans + 180) + "deg)";
                         dir = "U";
                         break;
                     case "GO":
@@ -458,11 +459,11 @@
         }
 
         switch (text_value) {
-            case "TAR LEF":               
+            case "TAR LEF":
                 if (lef_num - 50 < 0) {
                     alert("不能移动到框外");
                     return false;
-                }              
+                }
                 movediv.style.left = (lef_num - 50) + "px";
                 break;
             case "TAR RIG":
@@ -525,7 +526,7 @@
                     alert("不能移动到框外");
                     return false;
                 }
-                  dir = "U";
+                dir = "U";
                 movediv.style.top = (top_num - 50) + "px";
                 break;
             case "MOV BOT":
@@ -582,7 +583,7 @@
         text_input.value = "MOV BOT";
         tarMove();
     }
-        turlef.onclick = function() {
+    turlef.onclick = function() {
         text_input.value = "TUN LEF";
         tarMove();
     }
