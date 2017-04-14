@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>transform</title>
+    <style>
+    .stage {
+        position: relative;
+        margin: 0 auto;
+        width: 1000px;
+        height: 400px;
+        perspective: 600px;
+        margin-top: 200px;
+    }
+    
+    .wrap {
+        height: 350px;
+        width: 350px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -175px;
+        margin-top: -175px;
+        transform-style: preserve-3d;
+    }
+    
+    .box {
+        width: 200px;
+        height: 150px;
+        background: red;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -100px;
+        margin-top: -75px;
+        transition: all 1s;
+    }
+    
+    img {
+        width: 200px;
+        height: 150px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="stage">
+        <div class="wrap">
+            <div class="box box0" style="transform: rotateY(0deg) translateZ(450px);"><img src="img/1.jpg" alt="">
+            </div>
+            <div class="box box1" style="transform: rotateY(36deg) translateZ(450px);"><img src="img/2.jpg" alt="">
+            </div>
+            <div class="box box2" style="transform: rotateY(72deg) translateZ(450px);"><img src="img/3.jpg" alt="">
+            </div>
+            <div class="box box3" style="transform: rotateY(108deg) translateZ(450px);"><img src="img/4.jpg" alt="">
+            </div>
+            <div class="box box4" style="transform: rotateY(144deg) translateZ(450px);"><img src="img/5.jpg" alt="">
+            </div>
+            <div class="box box5" style="transform: rotateY(180deg) translateZ(450px);"><img src="img/6.jpg" alt="">
+            </div>
+            <div class="box box6" style="transform: rotateY(216deg) translateZ(450px);"><img src="img/7.jpg" alt="">
+            </div>
+            <div class="box box7" style="transform: rotateY(252deg) translateZ(450px);"><img src="img/8.jpg" alt="">
+            </div>
+            <div class="box box8" style="transform: rotateY(288deg) translateZ(450px);"><img src="img/9.jpg" alt="">
+            </div>
+            <div class="box box9" style="transform: rotateY(324deg) translateZ(450px);"><img src="img/10.jpg" alt="">
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+box = document.querySelectorAll(".box")
+
+for (var j = 0; j < box.length; j++) {
+    box[j].onclick = function() {
+        for (var i = 0; i < box.length; i++) {
+            var roty = parseInt(box[i].style.transform.substring(8))
+            box[i].style.transform = " rotateY(" + (roty - 36) + "deg) translateZ(450px)";
+        }
+
+    }
+}
+</script>
+
+</html>
