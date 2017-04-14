@@ -332,7 +332,7 @@
     </div>
     <script>
     var movediv = document.getElementById('movediv');
-    var dir = "U"; //div朝向上右下左，对应0123
+    var dir = "U"; //div朝向上右下左，
     var text_input = document.getElementById('text_input');
     var cmd_sub = document.getElementById('cmd_sub');
     var turlef = document.getElementById('turlef');
@@ -369,8 +369,9 @@
                         break;
                     case "TUN BAC":
                         movediv.style.transform = "rotate(" + (movediv_trans + 180) + "deg)";
-                        break;
+                        
                         dir = "B";
+                        break;
                     case "GO":
                         top_num = top_num - 50;
                         if (top_num < 0) {
