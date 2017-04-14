@@ -73,15 +73,16 @@
 <script>
 box = document.querySelectorAll(".box")
 
-for (var j = 0; j < box.length; j++) {
-    box[j].onclick = function() {
-        for (var i = 0; i < box.length; i++) {
-            var roty = parseInt(box[i].style.transform.substring(8))
-            box[i].style.transform = " rotateY(" + (roty - 36) + "deg) translateZ(450px)";
-        }
+function round() {
+    var time=setInterval(function() {
+            for (var i = 0; i < box.length; i++) {
+                var roty = parseInt(box[i].style.transform.substring(8))
+                box[i].style.transform = " rotateY(" + (roty - 36) + "deg) translateZ(450px)";
+            }
 
+        },1000) 
     }
-}
+round();
 </script>
 
 </html>
