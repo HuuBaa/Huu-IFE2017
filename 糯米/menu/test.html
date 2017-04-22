@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    *{margin:0;padding:0;}
+    #wrap{
+        margin:30px auto;
+        width:500px;
+        height:200px;
+        border:1px solid #ccc;
+        text-align: center;
+        overflow: scroll;
+    }
+    #wrap p{
+        display: block;
+        height:400px;
+    }
+    </style>
+</head>
+<body style="height:2000px; width:20000px">
+    <div id="wrap">
+        <p>测试pageX和clientX的区别</p>
+    </div>
+    <script>
+
+    window.onload=function(){
+        var oDiv = document.getElementById('wrap');
+
+        oDiv.onclick = function(e){
+            e = e || window.event;
+            console.log('e.clientX:'+e.clientX);
+            console.log('e.pageX:'+e.pageX);
+        }
+
+    }
+    </script>
+</body>
+</html>
+

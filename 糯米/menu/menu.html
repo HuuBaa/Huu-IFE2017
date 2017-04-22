@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>menu</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    html,
+    body {
+        height: 100%;
+    }
+    
+    .area {
+        margin: 0px 20px 0 20px;
+        border: 1px #ccc solid;
+        border-radius: 5px;
+        height: 300px;
+        background: #eee;
+    }
+    
+    .mymenu {
+        border: 1px #ccc solid;
+        width: 10em;
+        padding: 8px 8px 8px 25px;
+        line-height: 32px;
+        border-radius: 5px;
+        background: white;
+        position: absolute;
+        visibility: hidden;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="area">
+        区域内右键点击，看效果
+    </div>
+    <div class="mymenu">
+        <p class="op1">Memu Item One</p>
+        <p class="op2">Memu Item Two</p>
+        <p class="op3">Memu Item Three</p>
+        <p class="op4">Memu Item Four</p>
+    </div>
+    <script>
+    var mymenu = document.querySelector('.mymenu');
+    var area = document.querySelector('.area');
+    var body = document.querySelector('body');
+    area.oncontextmenu = function() {
+        return false;
+    };//阻止默认右键菜单出现
+    mymenu.oncontextmenu = function() {
+        return false;
+    };//阻止默认右键菜单出现
+
+    area.onclick = function(){
+        mymenu.style.visibility = 'hidden';
+    }
+    body.addEventListener('mousedown', function() {
+        mymenu.style.visibility = 'hidden';
+    })
+    area.onmousedown = function(e) {
+        //e.preventDefault();//阻止原有的菜单
+       // e.returnValue=false;//在IE中阻止原有的菜单
+        e = e || window.event;//事件兼容
+        window.event? window.event.cancelBubble = true : e.stopPropagation();//阻止冒泡
+        if (e.button == 2) {
+            mymenu.style.visibility = 'visible';
+            var posX = e.clientX;
+            var posY = e.clientY;
+            var mymemuwidth = mymenu.clientWidth;
+            var mymemuheight = mymenu.clientHeight;
+            var areawidth = area.clientWidth + 20;
+            var areaheight = area.clientHeight + 10;
+            if (areawidth - posX >= mymemuwidth && areaheight - posY >= mymemuheight) {
+                mymenu.style.top = posY + 'px';
+                mymenu.style.left = posX + 'px';
+            } else if (areawidth - posX < mymemuwidth && areaheight - posY >= mymemuheight) {
+                mymenu.style.top = posY + 'px';
+                mymenu.style.left = (posX - mymemuwidth) + 'px';
+            } else if (areaheight - posY < mymemuheight && areawidth - posX >= mymemuwidth) {
+                mymenu.style.top = (posY - mymemuheight) + 'px';
+                mymenu.style.left = posX + 'px';
+            } else {
+                mymenu.style.left = (posX - mymemuwidth) + 'px';
+                mymenu.style.top = (posY - mymemuheight) + 'px';
+            }
+            console.log(posX, posY)
+            console.log(areawidth)
+            console.log(areaheight)
+            console.log('window:' + window.innerWidth)
+        }
+    }
+    </script>
+</body>
+
+</html>
