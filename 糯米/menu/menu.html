@@ -67,14 +67,16 @@
     })
 
     for (var i = 0; i < op.length; i++) {
-        op[i].onclick = function() {
+        // 这里没有传参数 e 
+        op[i].onclick = function( e ) {
             window.event ? window.event.cancelBubble = true : e.stopPropagation(); //阻止冒泡
             alert('你选择了' + this.innerText);
             mymenu.style.visibility = 'hidden';
         };
     };
     for (var i = 0; i < op.length; i++) {
-        op[i].addEventListener('contextmenu', function() {
+        // 这里没有传参数 e 
+        op[i].addEventListener('contextmenu', function( e ) {
             window.event ? window.event.cancelBubble = true : e.stopPropagation(); //阻止冒泡
             alert('你选择了' + this.innerText);
             mymenu.style.visibility = 'hidden';
@@ -84,10 +86,23 @@
 
     area.oncontextmenu = function(e) {
         window.event ? window.event.cancelBubble = true : e.stopPropagation(); //阻止冒泡,防止触发body的oncontextmenu
-        e = e || window.event; //事件兼容
-        e.preventDefault(); //阻止原有的菜单
-        e.returnValue = false; //在IE中阻止原有的菜单        
+        
+        // e = e || window.event; //事件兼容
+        // // 这里并不兼容火狐的事件模型
+        e = e || event || window.event;
+
+
+        // e.preventDefault(); //阻止原有的菜单
+        // e.returnValue = false; //在IE中阻止原有的菜单      
+
+        /*
+            document.all:判断是否为IE浏览器，
+            window.event.returnValue = false 用来阻止IE10及以下版本的默认事件，不能使用 e.returnValue 
+         */
+        document.all ? window.event.returnValue = false : e.preventDefault();
+
         mymenu.style.visibility = 'visible';
+
         var posX = e.clientX;
         var posY = e.clientY;
         var mymemuwidth = mymenu.clientWidth;
